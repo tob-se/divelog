@@ -12,12 +12,11 @@ type Props = {
 function GoogleAutocomplete({ selected, setSelected }: Props) {
   const {
     value,
-    suggestions: { loading, data },
+    suggestions: { loading, status, data },
     setValue,
     init,
     ready,
   } = usePlacesAutocomplete({
-    callbackName: "YOUR_CALLBACK_NAME",
     debounce: 500,
     initOnMount: false,
   });
@@ -38,13 +37,13 @@ function GoogleAutocomplete({ selected, setSelected }: Props) {
     <AutoComplete
       disabled={isDisabled}
       options={data}
-      emptyMessage="No results"
       placeholder={isDisabled ? "Loading..." : "Scuba Junkie"}
       isLoading={loading}
       setValue={setValue}
       selected={selected}
       setSelected={setSelected}
       value={value}
+      showDropdown={status === "OK"}
     />
   );
 }

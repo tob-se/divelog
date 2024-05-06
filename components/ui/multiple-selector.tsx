@@ -17,22 +17,14 @@ import Image from "next/image";
 
 export interface Option {
   id: number;
-  name: string;
-  common_name?: string;
   value: string;
-  image?: {
-    square_url: string;
-    medium_url: string;
-    original_dimensions: {
-      height: number;
-      width: number;
-    };
-  };
+  second_value: string;
+  image_url: string | null;
   disable?: boolean;
   /** fixed option that can't be removed. */
   fixed?: boolean;
   /** Group the options by providing key. */
-  [key: string]: string | number | boolean | object | undefined;
+  [key: string]: string | number | boolean | null | undefined;
 }
 
 interface GroupOption {
@@ -347,7 +339,7 @@ const MultipleSelector = React.forwardRef<
                   data-fixed={option.fixed}
                   data-disabled={disabled}
                 >
-                  {option.common_name || option.name}
+                  {option.value || option.second_value}
                   <button
                     className={cn(
                       "ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2",
@@ -378,6 +370,11 @@ const MultipleSelector = React.forwardRef<
               onValueChange={(value) => {
                 setInputValue(value);
                 inputProps?.onValueChange?.(value);
+
+                // clear input when using onSearch
+                if (onSearch && value === "") {
+                  setOptions(transToGroupOption([]));
+                }
               }}
               onBlur={(event) => {
                 setOpen(false);
@@ -401,7 +398,7 @@ const MultipleSelector = React.forwardRef<
           </div>
         </div>
         <div className="relative">
-          {open && (
+          {open && Object.entries(selectables).length > 0 && (
             <CommandList className="absolute mt-2 top-0 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
               {isLoading ? (
                 <>{loadingIndicator}</>
@@ -437,6 +434,11 @@ const MultipleSelector = React.forwardRef<
                                 const newOptions = [...selected, option];
                                 setSelected(newOptions);
                                 onChange?.(newOptions);
+
+                                // clear input when using onSearch
+                                if (onSearch) {
+                                  setOptions(transToGroupOption([]));
+                                }
                               }}
                               className={cn(
                                 "cursor-pointer flex flex-row gap-2 items-center",
@@ -444,9 +446,9 @@ const MultipleSelector = React.forwardRef<
                                   "cursor-default text-muted-foreground"
                               )}
                             >
-                              {option.image && (
+                              {option.image_url && (
                                 <Image
-                                  src={option.image.square_url}
+                                  src={option.image_url}
                                   width={40}
                                   height={40}
                                   alt="Picture of the author"
@@ -455,10 +457,10 @@ const MultipleSelector = React.forwardRef<
                               )}
                               <div className="flex flex-col">
                                 <span className="font-medium leading-none">
-                                  {option.common_name}
+                                  {option.value}
                                 </span>
                                 <span className="text-muted-foreground">
-                                  {option.name}
+                                  {option.second_value}
                                 </span>
                               </div>
                             </CommandItem>

@@ -33,35 +33,14 @@ import { useForm } from "react-hook-form";
 import { Suggestion } from "use-places-autocomplete";
 import { z } from "zod";
 import GoogleAutocomplete from "./google-autocomplete";
-// @ts-ignore
-import species from "./species.json";
 import Link from "next/link";
-
-type Specie = {
-  id: number;
-  name: string;
-  oberservations: number;
-  common_name?: string;
-  image?: {
-    square_url: string;
-    medium_url: string;
-    original_dimensions: {
-      height: number;
-      width: number;
-    };
-  };
-};
-
-// @ts-ignore
-const selectables: Option[] = species.slice(0, 20).map((specie: Specie) => ({
-  value: specie.common_name + specie.name,
-  ...specie,
-}));
+import { findSpeciesByCommonName } from "./actions";
 
 const optionSchema = z.object({
-  value: z.string(),
   id: z.number(),
-  name: z.string(),
+  value: z.string(),
+  second_value: z.string(),
+  image_url: z.string(),
 });
 
 const suggestionSchema = z.object({
@@ -99,6 +78,12 @@ const formSchema = z.object({
   location: suggestionSchema.optional(),
   diveSite: z.string().optional(),
 });
+
+const loadingIndicator = (
+  <p className="text-center text-sm leading-10 text-muted-foreground">
+    loading...
+  </p>
+);
 
 export default function DiveForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -170,13 +155,18 @@ export default function DiveForm() {
                     <MultipleSelector
                       value={field.value}
                       onChange={field.onChange}
-                      defaultOptions={selectables}
+                      onSearch={async (value) => {
+                        const species = await findSpeciesByCommonName(value);
+
+                        return species.map((specie) => ({
+                          value: specie.common_name || specie.name,
+                          id: specie.id,
+                          second_value: specie.name,
+                          image_url: specie.square_url,
+                        }));
+                      }}
                       placeholder="Hammerhead"
-                      emptyIndicator={
-                        <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-                          no results found.
-                        </p>
-                      }
+                      loadingIndicator={loadingIndicator}
                     />
                   </FormControl>
                   <FormMessage />
