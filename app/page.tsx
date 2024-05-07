@@ -13,6 +13,7 @@ function Home() {
           <Button className="w-full">Log New Dive</Button>
         </Link>
         <Button>Dive Log</Button>
+        <Button>Marine Life List</Button>
       </CardContent>
     </Card>
   );

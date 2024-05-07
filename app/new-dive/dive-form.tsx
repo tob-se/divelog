@@ -28,13 +28,15 @@ import {
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { CalendarIcon, ChevronLeft } from "lucide-react";
+import { CalendarIcon, ChevronLeft, Star } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Suggestion } from "use-places-autocomplete";
 import { z } from "zod";
 import GoogleAutocomplete from "./google-autocomplete";
 import Link from "next/link";
 import { findSpeciesByCommonName } from "./actions";
+import { Textarea } from "@/components/ui/textarea";
+import * as Toggle from "@radix-ui/react-toggle";
 
 const optionSchema = z.object({
   id: z.number(),
@@ -73,10 +75,12 @@ const suggestionSchema = z.object({
 });
 
 const formSchema = z.object({
-  date: z.date().optional(),
-  marineLife: z.array(optionSchema).optional(),
-  location: suggestionSchema.optional(),
-  diveSite: z.string().optional(),
+  date: z.date(),
+  marineLife: z.array(optionSchema),
+  location: suggestionSchema,
+  diveSite: z.string().min(1),
+  comment: z.string(),
+  highlight: z.boolean(),
 });
 
 const loadingIndicator = (
@@ -91,7 +95,9 @@ export default function DiveForm() {
     defaultValues: {
       date: new Date(),
       diveSite: "",
+      comment: "",
       marineLife: [],
+      highlight: false,
     },
   });
 
@@ -103,9 +109,28 @@ export default function DiveForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <Card>
-          <CardHeader>
-            <CardTitle>Dive #199</CardTitle>
-            <CardDescription>How was your dive?</CardDescription>
+          <CardHeader className="flex-row space-y-0 justify-between">
+            <div className="space-y-1.5">
+              <CardTitle>Dive #199</CardTitle>
+              <CardDescription>How was your dive?</CardDescription>
+            </div>
+            <FormField
+              control={form.control}
+              name="highlight"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Toggle.Root
+                      aria-label="Toggle highlight"
+                      onPressedChange={field.onChange}
+                      title="Highlight"
+                    >
+                      {field.value ? <Star fill="gold" /> : <Star />}
+                    </Toggle.Root>
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           </CardHeader>
           <CardContent className="space-y-5">
             <FormField
@@ -199,6 +224,23 @@ export default function DiveForm() {
                   <FormLabel>Dive Site</FormLabel>
                   <FormControl>
                     <Input placeholder="Barracuda Point" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="comment"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Comment</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Best dive ever"
+                      className="min-h-[60px]"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -22,6 +22,7 @@
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toggle": "^1.0.3",
     "@react-google-maps/api": "^2.19.3",
     "@vercel/postgres": "^0.8.0",
     "class-variance-authority": "^0.7.0",
