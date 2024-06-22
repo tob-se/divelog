@@ -1,3 +1,23 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "import/no-cycle": 1,
+    "import/no-restricted-paths": [
+      "error",
+      {
+        "zones": [
+          {
+            "target": "app",
+            "from": "infrastructure",
+            "message": "Importing any files from infrastructure inside app is disallowed."
+          },
+          {
+            "target": "domain",
+            "from": "app",
+            "message": "Importing any files from app inside domain is disallowed."
+          }
+        ]
+      }
+    ]
+  }
 }

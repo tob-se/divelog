@@ -28,5 +28,10 @@
         "webRoot": "${workspaceFolder}"
       }
     }
+  ],
+  "resolveSourceMapLocations": [
+    "${workspaceFolder}/",
+    "!/node_modules/**",
+    "!/.next/**"
   ]
 }

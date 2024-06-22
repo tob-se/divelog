@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -13,6 +19,12 @@ const nextConfig = {
         hostname: "static.inaturalist.org",
         port: "",
         pathname: "/photos/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.inaturalist.org",
+        port: "",
+        pathname: "/attachment_defaults/local_photos/**",
       },
     ],
   },

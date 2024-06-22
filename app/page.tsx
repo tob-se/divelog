@@ -1,20 +1,52 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/_components/ui/card";
+import TextTuple from "@/app/_components/ui/text-tuple";
+import { BookOpen, FishSymbol, List, Plus } from "lucide-react";
+import { Suspense } from "react";
+import {
+  LastDiveInformationFallback,
+  LastDiveInformation,
+} from "./_components/home/last-dive-information";
+import {
+  LastObservedSpecieFallback,
+  LastObservedSpecie,
+} from "./_components/home/last-observed-specie";
+import NavigationButton from "./_components/home/navigation-button";
 
 function Home() {
   return (
-    <Card>
-      <CardHeader className="text-center">
-        <CardTitle>Dive Log</CardTitle>
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle className="flex flex-row gap-2">
+          <FishSymbol />
+          Dive Log
+        </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col space-y-5">
-        <Link href="/new-dive">
-          <Button className="w-full">Log New Dive</Button>
-        </Link>
-        <Button>Dive Log</Button>
-        <Button>Marine Life List</Button>
+      <CardContent className="flex flex-col gap-3 text-sm">
+        <Suspense fallback={<LastObservedSpecieFallback />}>
+          <LastObservedSpecie />
+        </Suspense>
+        <Suspense fallback={<LastDiveInformationFallback />}>
+          <LastDiveInformation />
+        </Suspense>
+        <TextTuple title="Dive Insurance">123123123</TextTuple>
       </CardContent>
+      <CardFooter className="flex-wrap justify-between">
+        <NavigationButton href="/new-dive" name="New Dive">
+          <Plus size={30} />
+        </NavigationButton>
+        <NavigationButton href="/dives" name="Logbook">
+          <BookOpen size={30} />
+        </NavigationButton>
+        <NavigationButton name="Life List" href="/">
+          <List size={30} />
+        </NavigationButton>
+      </CardFooter>
     </Card>
   );
 }
