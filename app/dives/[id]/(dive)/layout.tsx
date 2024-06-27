@@ -3,7 +3,6 @@ import { Card, CardFooter } from "@/app/_components/ui/card";
 import Header from "@/app/_components/ui/header";
 import Link from "next/link";
 import DeleteDiveForm from "../../../_components/dive/delete-dive-form";
-import { Toaster } from "@/app/_components/ui/toaster";
 
 type Props = {
   children: React.ReactNode;
@@ -32,7 +31,6 @@ function Layout({ params, children }: Props) {
           </div>
         </CardFooter>
       </Card>
-      <Toaster />
     </>
   );
 }

@@ -1,11 +1,11 @@
 import "server-only";
 
+import { specieSchema } from "@/domain/specie";
 import { db } from "@/infrastructure/drizzle/db";
 import { ObservationTable, SpecieTable } from "@/infrastructure/drizzle/schema";
-import { eq, getTableColumns } from "drizzle-orm";
-import { findLastDive } from "./find-last-dive";
-import { specieSchema } from "@/domain/specie";
+import { eq } from "drizzle-orm";
 import { selectSpecie } from "../select-statements";
+import { findLastDive } from "./find-last-dive";
 
 export const findLastObservedSpecie = async () => {
   const lastDive = await findLastDive();

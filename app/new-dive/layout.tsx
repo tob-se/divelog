@@ -1,5 +1,4 @@
 import Header from "@/app/_components/ui/header";
-import { Toaster } from "../_components/ui/toaster";
 
 function Layout({
   children,
@@ -10,7 +9,6 @@ function Layout({
     <>
       <Header href="/" name="Log new dive" />
       {children}
-      <Toaster />
     </>
   );
 }
