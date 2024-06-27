@@ -1,8 +1,9 @@
 import DivePagination from "@/app/_components/dives/dive-pagination";
-import Search from "@/app/_components/ui/search";
 import { Button } from "@/app/_components/ui/button";
 import DateAndTime from "@/app/_components/ui/date-and-time";
-import { DiveService } from "@/domain/service/dive-service";
+import Search from "@/app/_components/ui/search";
+import { countTotalDivePages } from "@/infrastructure/data-access/count-dives-by-site-or-place";
+import { findDivesBySiteOrPlace } from "@/infrastructure/data-access/find-dives-by-site-or-place";
 import { Filter } from "lucide-react";
 import Link from "next/link";
 
@@ -17,8 +18,8 @@ async function DiveList({
   const query = searchParams?.query || "";
   const page = searchParams?.page || 1;
 
-  const divesPromise = DiveService.getDives(query, page);
-  const totalPagesPromise = DiveService.getTotalDivePages(query);
+  const divesPromise = findDivesBySiteOrPlace(query, page);
+  const totalPagesPromise = countTotalDivePages(query);
   const [dives, totalPages] = await Promise.all([
     divesPromise,
     totalPagesPromise,

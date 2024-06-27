@@ -1,15 +1,16 @@
 import "server-only";
 
-import { diveSchema } from "@/domain/dive";
+import { diveSchema } from "@/types/dive";
 import { desc, ilike, or } from "drizzle-orm";
 import { db } from "../drizzle/db";
 import { DiveTable } from "../drizzle/schema";
-import { selectDive } from "../select-statements";
+import { SelectDive } from "../select-statements";
 
-const ITEMS_PER_PAGE = 15;
+export const DIVES_PER_PAGE = 15;
+
 export const findDivesBySiteOrPlace = async (query: string, page: number) => {
   const dives = await db
-    .select(selectDive)
+    .select(SelectDive)
     .from(DiveTable)
     .orderBy(desc(DiveTable.date))
     .where(
@@ -20,8 +21,8 @@ export const findDivesBySiteOrPlace = async (query: string, page: number) => {
           )
         : undefined,
     )
-    .limit(ITEMS_PER_PAGE)
-    .offset((page - 1) * ITEMS_PER_PAGE); // the number of rows to skip;
+    .limit(DIVES_PER_PAGE)
+    .offset((page - 1) * DIVES_PER_PAGE); // the number of rows to skip;
 
   return dives.map((d) => diveSchema.parse(d));
 };

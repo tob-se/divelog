@@ -1,12 +1,15 @@
 "use server";
 
-import { DiveFormState } from "@/app/_validations/dive-form-state";
-import { validateDiveForm } from "@/app/_validations/validate-dive-form";
-import { DiveService } from "@/domain/service/dive-service";
-import { EditDiveFormData } from "../_validations/edit-dive-form-data";
+import { DiveFormState } from "@/app/_actions/form-states/dive-form-state";
+import {
+  DiveFormData,
+  validateDiveForm,
+} from "@/app/_actions/validations/validate-dive-form";
+import { updateDive } from "@/infrastructure/data-access/update-dive";
+import { redirect } from "next/navigation";
 
 export async function editDive(
-  editDive: EditDiveFormData,
+  editDive: DiveFormData,
   prevState: DiveFormState,
   formData: FormData,
 ) {
@@ -21,5 +24,13 @@ export async function editDive(
     return newState;
   }
 
-  return await DiveService.editDive(validatedFields.data);
+  try {
+    await updateDive(validatedFields.data);
+  } catch (e) {
+    return {
+      message: "Database Error: Failed to update dive.",
+    };
+  }
+
+  redirect(`/dives/${validatedFields.data.id}`);
 }

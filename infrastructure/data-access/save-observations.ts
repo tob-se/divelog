@@ -1,6 +1,6 @@
 import "server-only";
 
-import { EditObservations } from "@/domain/edit-observations";
+import { EditObservations } from "@/types/edit-observations";
 import { db } from "@/infrastructure/drizzle/db";
 import { ObservationTable } from "@/infrastructure/drizzle/schema";
 import { eq } from "drizzle-orm";

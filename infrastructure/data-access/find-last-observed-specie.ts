@@ -1,10 +1,10 @@
 import "server-only";
 
-import { specieSchema } from "@/domain/specie";
+import { specieSchema } from "@/types/specie";
 import { db } from "@/infrastructure/drizzle/db";
 import { ObservationTable, SpecieTable } from "@/infrastructure/drizzle/schema";
 import { eq } from "drizzle-orm";
-import { selectSpecie } from "../select-statements";
+import { SelectSpecie } from "../select-statements";
 import { findLastDive } from "./find-last-dive";
 
 export const findLastObservedSpecie = async () => {
@@ -15,7 +15,7 @@ export const findLastObservedSpecie = async () => {
   }
 
   const lastSpecies = await db
-    .select(selectSpecie)
+    .select(SelectSpecie)
     .from(ObservationTable)
     .where(eq(ObservationTable.dive_id, lastDive.id))
     .limit(1)

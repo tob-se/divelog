@@ -1,4 +1,4 @@
-import { Specie } from "@/domain/specie";
+import { Specie } from "@/types/specie";
 import { cn } from "@/lib/utils";
 import { Fish } from "lucide-react";
 import Image from "next/image";

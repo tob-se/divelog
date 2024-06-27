@@ -3,12 +3,12 @@ import "server-only";
 import { desc, ilike, or } from "drizzle-orm";
 import { db } from "../drizzle/db";
 import { SpecieTable } from "../drizzle/schema";
-import { selectSpecie } from "../select-statements";
-import { specieSchema } from "@/domain/specie";
+import { SelectSpecie } from "../select-statements";
+import { specieSchema } from "@/types/specie";
 
 export const findSpeciesByName = async (name: string) => {
   const species = await db
-    .select(selectSpecie)
+    .select(SelectSpecie)
     .from(SpecieTable)
     .limit(20)
     .where(

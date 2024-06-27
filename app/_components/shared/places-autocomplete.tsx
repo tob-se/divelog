@@ -1,5 +1,5 @@
 import { AutoComplete } from "@/app/_components/ui/autocomplete";
-import { Place } from "@/domain/place";
+import { Place } from "@/types/place";
 import { Libraries, useJsApiLoader } from "@react-google-maps/api";
 import usePlacesAutocomplete from "use-places-autocomplete";
 

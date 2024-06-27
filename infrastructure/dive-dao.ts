@@ -2,7 +2,7 @@ import "server-only";
 
 import { InferSelectModel } from "drizzle-orm";
 import { DiveTable } from "./drizzle/schema";
-import { NewDive } from "@/domain/new-dive";
+import { NewDive } from "@/types/new-dive";
 
 export type DiveDAO = InferSelectModel<typeof DiveTable>;
 

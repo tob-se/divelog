@@ -1,6 +1,6 @@
 "use client";
 
-import { Observation } from "@/domain/observation";
+import { Observation } from "@/types/observation";
 import { useCallback, useMemo, useState } from "react";
 import { ObservationContext } from "./observation-context";
 

@@ -9,7 +9,7 @@ import {
 } from "./command";
 import CommandWithLabel from "./command-with-label";
 import { Skeleton } from "./skeleton";
-import { Place } from "@/domain/place";
+import { Place } from "@/types/place";
 
 type AutoCompleteProps = {
   options: Place[];

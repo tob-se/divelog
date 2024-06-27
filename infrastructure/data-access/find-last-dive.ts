@@ -3,12 +3,12 @@ import "server-only";
 import { desc } from "drizzle-orm";
 import { db } from "../drizzle/db";
 import { DiveTable } from "../drizzle/schema";
-import { selectDive } from "../select-statements";
-import { diveSchema } from "@/domain/dive";
+import { SelectDive } from "../select-statements";
+import { diveSchema } from "@/types/dive";
 
 export const findLastDive = async () => {
   const lastDives = await db
-    .select(selectDive)
+    .select(SelectDive)
     .from(DiveTable)
     .orderBy(desc(DiveTable.date))
     .limit(1);

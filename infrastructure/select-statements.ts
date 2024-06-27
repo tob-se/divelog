@@ -4,7 +4,7 @@ import { DiveTable, SpecieTable } from "./drizzle/schema";
 const { place_id, place_main_text, place_secondary_text, ...restDive } =
   getTableColumns(DiveTable);
 
-export const selectDive = {
+export const SelectDive = {
   ...restDive,
   place: {
     id: DiveTable.place_id,
@@ -18,4 +18,4 @@ export const selectDive = {
 
 const { observations, ...restSpecie } = { ...getTableColumns(SpecieTable) };
 
-export const selectSpecie = restSpecie;
+export const SelectSpecie = restSpecie;

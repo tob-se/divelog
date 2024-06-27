@@ -1,7 +1,7 @@
 "use client";
 
 import { ListSeparator } from "@/app/_components/ui/separator";
-import { Observation } from "@/domain/observation";
+import { Observation } from "@/types/observation";
 import { Fragment, useEffect } from "react";
 import SpecieListItem from "../shared/specie-list-item";
 import DeleteObservationButton from "./delete-observation-button";

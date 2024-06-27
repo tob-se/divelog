@@ -1,12 +1,12 @@
 "use client";
 
+import { GenericFormState } from "@/app/_actions/form-states/generic-form-state";
 import { DeleteButton } from "@/app/_components/ui/delete-button";
 import { useMessageToast } from "@/app/_hooks/useMessageToast";
-import { DeleteDiveFormState } from "@/app/_validations/delete-dive-form-state";
 import { useFormState } from "react-dom";
 import { removeDive } from "../../_actions/remove-dive.action";
 
-const initialState: DeleteDiveFormState = {
+const initialState: GenericFormState = {
   message: undefined,
 };
 

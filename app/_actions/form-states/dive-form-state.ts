@@ -1,5 +1,6 @@
-export type DiveFormState = {
-  message?: string;
+import { GenericFormState } from "./generic-form-state";
+
+export type DiveFormState = GenericFormState & {
   errors?: {
     id?: string[];
     comment?: string[];

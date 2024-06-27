@@ -1,8 +1,8 @@
-import { DiveService } from "@/domain/service/dive-service";
+import { findLastDive } from "@/infrastructure/data-access/find-last-dive";
 import CreateDiveForm from "../_components/new-dive/create-dive-form";
 
 export default async function NewDive() {
-  const dive = await DiveService.getLastDive();
+  const dive = await findLastDive();
 
   return (
     <CreateDiveForm

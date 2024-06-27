@@ -2,7 +2,7 @@ import { Button } from "@/app/_components/ui/button";
 import { DialogFooter } from "@/app/_components/ui/dialog";
 import { Input } from "@/app/_components/ui/input";
 import { Label } from "@/app/_components/ui/label";
-import { Observation } from "@/domain/observation";
+import { Observation } from "@/types/observation";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useObservationContext } from "./observation-context";
 

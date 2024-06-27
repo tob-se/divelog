@@ -1,8 +1,8 @@
 "use client";
 
 import { useMessageToast } from "@/app/_hooks/useMessageToast";
-import { DiveFormState } from "@/app/_validations/dive-form-state";
-import { Place } from "@/domain/place";
+import { DiveFormState } from "@/app/_actions/form-states/dive-form-state";
+import { Place } from "@/types/place";
 import { createUTCDate } from "@/lib/utils";
 import { useState } from "react";
 import { useFormState } from "react-dom";

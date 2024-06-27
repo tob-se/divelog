@@ -1,15 +1,17 @@
 "use server";
 
-import { ObservationsFormState } from "@/app/_validations/observations-form-state";
+import { saveObservations } from "@/infrastructure/data-access/save-observations";
 import {
   EditObservations,
   editObservationsSchema,
-} from "@/domain/edit-observations";
-import { ObservationService } from "@/domain/service/observation-service";
+} from "@/types/edit-observations";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+import { GenericFormState } from "./form-states/generic-form-state";
 
 export const editObservations = async (
   editObservations: EditObservations,
-  prevState: ObservationsFormState,
+  prevState: GenericFormState,
   formData: FormData,
 ) => {
   const validatedForm = editObservationsSchema.safeParse(editObservations);
@@ -21,5 +23,15 @@ export const editObservations = async (
     };
   }
 
-  return await ObservationService.editObservations(validatedForm.data);
+  try {
+    await saveObservations(validatedForm.data);
+  } catch (error) {
+    return {
+      message: "Database Error",
+    };
+  }
+
+  const { diveId } = validatedForm.data;
+  revalidatePath(`/dives/${diveId}/observations`);
+  redirect(`/dives/${diveId}`);
 };

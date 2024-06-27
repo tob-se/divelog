@@ -1,9 +1,9 @@
 "use client";
 
 import { useMessageToast } from "@/app/_hooks/useMessageToast";
-import { DiveFormState } from "@/app/_validations/dive-form-state";
-import { Dive } from "@/domain/dive";
-import { Place } from "@/domain/place";
+import { DiveFormState } from "@/app/_actions/form-states/dive-form-state";
+import { Dive } from "@/types/dive";
+import { Place } from "@/types/place";
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { editDive } from "../../_actions/edit-dive.action";

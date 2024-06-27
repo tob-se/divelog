@@ -1,6 +1,6 @@
 import { InferInsertModel } from "drizzle-orm";
 import { ObservationTable } from "./drizzle/schema";
-import { EditObservations } from "@/domain/edit-observations";
+import { EditObservations } from "@/types/edit-observations";
 
 export type ObservationDAO = InferInsertModel<typeof ObservationTable>;
 

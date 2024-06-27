@@ -1,4 +1,4 @@
-import { Observation } from "@/domain/observation";
+import { Observation } from "@/types/observation";
 import { createContext, useContext } from "react";
 
 type ContextType = {

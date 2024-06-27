@@ -1,8 +1,8 @@
 import DateAndTime from "@/app/_components/ui/date-and-time";
 import GenericTuple from "@/app/_components/ui/generic-tuple";
 import { Skeleton } from "@/app/_components/ui/skeleton";
+import { findLastDive } from "@/infrastructure/data-access/find-last-dive";
 import TextTuple from "../ui/text-tuple";
-import { DiveService } from "@/domain/service/dive-service";
 
 export async function LastDiveInformationFallback() {
   return (
@@ -18,7 +18,7 @@ export async function LastDiveInformationFallback() {
 }
 
 export async function LastDiveInformation() {
-  const dive = await DiveService.getLastDive();
+  const dive = await findLastDive();
 
   if (!dive) return null;
 

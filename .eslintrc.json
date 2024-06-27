@@ -8,13 +8,8 @@
         "zones": [
           {
             "target": "app",
-            "from": "infrastructure",
-            "message": "Importing any files from infrastructure inside app is disallowed."
-          },
-          {
-            "target": "domain",
-            "from": "app",
-            "message": "Importing any files from app inside domain is disallowed."
+            "from": "infrastructure/drizzle",
+            "message": "Importing any files from drizzle inside app is disallowed."
           }
         ]
       }

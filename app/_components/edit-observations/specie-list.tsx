@@ -5,7 +5,7 @@ import { ListSeparator } from "@/app/_components/ui/separator";
 import { Fragment } from "react";
 import SpecieListItem from "../shared/specie-list-item";
 import { useObservationContext } from "./observation-context";
-import { Specie } from "@/domain/specie";
+import { Specie } from "@/types/specie";
 
 export default function SpecieList({ species }: { species: Specie[] }) {
   const { observations } = useObservationContext();

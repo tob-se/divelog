@@ -1,9 +1,15 @@
-import { newDiveSchema } from "@/domain/new-dive";
-import { EditDiveFormData } from "./edit-dive-form-data";
+import { newDiveSchema } from "@/types/new-dive";
+import { Place } from "@/types/place";
+
+export type DiveFormData = {
+  date: Date;
+  place?: Place;
+  id: string;
+};
 
 export const validateDiveForm = (
   formData: FormData,
-  diveData: EditDiveFormData,
+  diveData: DiveFormData,
 ) => {
   const { id, place, date } = diveData;
 

@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogTrigger,
 } from "@/app/_components/ui/dialog";
-import { Observation } from "@/domain/observation";
+import { Observation } from "@/types/observation";
 import { Fish } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";

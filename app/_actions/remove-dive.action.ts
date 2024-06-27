@@ -1,12 +1,14 @@
 "use server";
 
-import { DiveService } from "@/domain/service/dive-service";
+import { deleteDive } from "@/infrastructure/data-access/delete-dive";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { z } from "zod";
-import { DeleteDiveFormState } from "../_validations/delete-dive-form-state";
+import { GenericFormState } from "./form-states/generic-form-state";
 
 export const removeDive = async (
   id: string,
-  prevState: DeleteDiveFormState,
+  prevState: GenericFormState,
   formData: FormData,
 ) => {
   const validatedId = z.string().uuid().safeParse(id);
@@ -17,5 +19,14 @@ export const removeDive = async (
     };
   }
 
-  return await DiveService.removeDive(validatedId.data);
+  try {
+    await deleteDive(id);
+  } catch (e) {
+    return {
+      message: "Database Error",
+    };
+  }
+
+  revalidatePath("/dives");
+  redirect("/dives");
 };

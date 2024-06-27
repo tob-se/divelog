@@ -1,12 +1,16 @@
 "use server";
 
-import { DiveFormState } from "@/app/_validations/dive-form-state";
-import { validateDiveForm } from "@/app/_validations/validate-dive-form";
-import { DiveService } from "@/domain/service/dive-service";
+import { DiveFormState } from "@/app/_actions/form-states/dive-form-state";
+import {
+  DiveFormData,
+  validateDiveForm,
+} from "@/app/_actions/validations/validate-dive-form";
+import { insertDive } from "@/infrastructure/data-access/insert-dive";
 import { randomUUID } from "crypto";
-import { EditDiveFormData } from "../_validations/edit-dive-form-data";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-type NewDiveFormData = Omit<EditDiveFormData, "id">;
+type NewDiveFormData = Omit<DiveFormData, "id">;
 
 export async function newDive(
   diveData: NewDiveFormData,
@@ -27,5 +31,15 @@ export async function newDive(
     return newState;
   }
 
-  return await DiveService.addDive(validatedFields.data);
+  try {
+    await insertDive(validatedFields.data);
+  } catch (e) {
+    return {
+      message: "Database Error: Failed to add dive.",
+    };
+  }
+
+  revalidatePath("/");
+  revalidatePath("/dives");
+  redirect(`/dives/${validatedFields.data.id}/observations`);
 }

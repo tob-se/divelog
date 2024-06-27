@@ -1,17 +1,17 @@
 "use client";
 
+import { GenericFormState } from "@/app/_actions/form-states/generic-form-state";
 import { Button } from "@/app/_components/ui/button";
 import SubmitButton from "@/app/_components/ui/submit-button";
 import { useMessageToast } from "@/app/_hooks/useMessageToast";
-import { ObservationsFormState } from "@/app/_validations/observations-form-state";
-import { toEditObservations } from "@/domain/edit-observations";
+import { toEditObservations } from "@/types/edit-observations";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useFormState } from "react-dom";
 import { editObservations } from "../../_actions/edit-observations.action";
 import { useObservationContext } from "./observation-context";
 
-const initialState: ObservationsFormState = {
+const initialState: GenericFormState = {
   message: undefined,
 };
 

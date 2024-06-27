@@ -3,16 +3,21 @@ import DateAndTime from "@/app/_components/ui/date-and-time";
 import GenericTuple from "@/app/_components/ui/generic-tuple";
 import { ListSeparator, Separator } from "@/app/_components/ui/separator";
 import TextTuple from "@/app/_components/ui/text-tuple";
+import { findDiveById } from "@/infrastructure/data-access/find-dive-by-id";
+import { findObservationsByDiveId } from "@/infrastructure/data-access/find-observations-by-id";
 import { Star } from "lucide-react";
+import { notFound } from "next/navigation";
 import { Fragment } from "react";
 import SpecieListItem from "../../../_components/shared/specie-list-item";
-import { DiveService } from "@/domain/service/dive-service";
-import { ObservationService } from "@/domain/service/observation-service";
 
 async function Dive({ params }: { params: { id: string } }) {
-  const diveData = DiveService.getDive(params.id);
-  const observationsData = ObservationService.getObservations(params.id);
+  const diveData = findDiveById(params.id);
+  const observationsData = findObservationsByDiveId(params.id);
   const [dive, observations] = await Promise.all([diveData, observationsData]);
+
+  if (!dive) {
+    notFound();
+  }
 
   const { comment, date, highlight, place, dive_site } = dive;
 

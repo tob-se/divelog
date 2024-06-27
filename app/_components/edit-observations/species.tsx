@@ -1,8 +1,9 @@
-import { SpecieService } from "@/domain/service/specie-service";
+import { findSpeciesByName } from "@/infrastructure/data-access/find-species-by-name";
 import SpecieList from "./specie-list";
 
 async function Species({ query }: { query: string }) {
-  const species = await SpecieService.getSpecies(query);
+  const species = await findSpeciesByName(query);
+
   return <SpecieList species={species} />;
 }
 
