@@ -22,7 +22,7 @@ function Home() {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="flex flex-row gap-2">
+        <CardTitle data-testid="title" className="flex flex-row gap-2">
           <FishSymbol />
           Dive Log
         </CardTitle>
