@@ -1,5 +1,9 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:jest/style",
+    "plugin:testing-library/react"
+  ],
   "rules": {
     "import/no-cycle": 1,
     "import/no-restricted-paths": [

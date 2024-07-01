@@ -1,0 +1,188 @@
+{
+  "id": "392e81f3-05a7-40e9-a154-a551285903f4",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.dive": {
+      "name": "dive",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "place_id": {
+          "name": "place_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "place_main_text": {
+          "name": "place_main_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "place_secondary_text": {
+          "name": "place_secondary_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dive_site": {
+          "name": "dive_site",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "comment": {
+          "name": "comment",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "highlight": {
+          "name": "highlight",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.observation": {
+      "name": "observation",
+      "schema": "",
+      "columns": {
+        "dive_id": {
+          "name": "dive_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "specie_id": {
+          "name": "specie_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "amount": {
+          "name": "amount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "observation_dive_id_dive_id_fk": {
+          "name": "observation_dive_id_dive_id_fk",
+          "tableFrom": "observation",
+          "tableTo": "dive",
+          "columnsFrom": [
+            "dive_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "observation_specie_id_specie_id_fk": {
+          "name": "observation_specie_id_specie_id_fk",
+          "tableFrom": "observation",
+          "tableTo": "specie",
+          "columnsFrom": [
+            "specie_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "observation_dive_id_specie_id_pk": {
+          "name": "observation_dive_id_specie_id_pk",
+          "columns": [
+            "dive_id",
+            "specie_id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.specie": {
+      "name": "specie",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "common_name": {
+          "name": "common_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "observations": {
+          "name": "observations",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "square_url": {
+          "name": "square_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "medium_url": {
+          "name": "medium_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "wikipedia_url": {
+          "name": "wikipedia_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
