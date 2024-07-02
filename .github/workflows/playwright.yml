@@ -58,3 +58,6 @@ jobs:
 
       - name: Start
         run: npm run start
+
+      - name: Test
+        run: npm run test
