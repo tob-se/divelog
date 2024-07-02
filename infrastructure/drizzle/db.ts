@@ -8,7 +8,7 @@ loadEnvConfig(projectDir);
 
 const pool = new Pool({
   host: process.env.POSTGRES_HOST,
-  port: process.env.POSTGRES_PORT,
+  port: 5432,
   user: "postgres",
   password: "postgres",
   database: "postgres",
