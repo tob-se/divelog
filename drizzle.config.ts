@@ -11,5 +11,6 @@ export default defineConfig({
     password: "postgres",
     database: "postgres",
     port: 5432,
+    ssl: false,
   },
 });

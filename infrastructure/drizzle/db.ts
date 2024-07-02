@@ -12,6 +12,7 @@ const pool = new Pool({
   user: "postgres",
   password: "postgres",
   database: "postgres",
+  ssl: false,
 });
 
 export const db = drizzle(pool, { schema });
