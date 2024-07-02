@@ -7,7 +7,11 @@ const projectDir = process.cwd();
 loadEnvConfig(projectDir);
 
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL!,
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT,
+  user: "postgres",
+  password: "postgres",
+  database: "postgres",
 });
 
 export const db = drizzle(pool, { schema });
