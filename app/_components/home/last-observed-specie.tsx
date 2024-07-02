@@ -3,7 +3,6 @@ import { Skeleton } from "@/app/_components/ui/skeleton";
 import { findLastObservedSpecie } from "@/infrastructure/data-access/find-last-observed-specie";
 import { Fish } from "lucide-react";
 import Image from "next/image";
-
 export function LastObservedSpecieFallback() {
   return (
     <GenericTuple title="Last Observation">
