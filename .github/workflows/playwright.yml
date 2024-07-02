@@ -1,9 +1,17 @@
 name: Playwright Tests
+
 on:
   push:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+
+env:
+  POSTGRES_HOST: postgres
+  POSTGRES_DATABASE: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  CI: true
 
 jobs:
   # Label of the container job
@@ -42,13 +50,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Connect to PostgreSQL
-        # Runs a script that creates a PostgreSQL table, populates
-        # the table with data, and then retrieves the data.
+      - name: Push DB Schema
         run: npm run push
-        # Environment variables used by the `client.js` script to create a new PostgreSQL table.
-        env:
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+
+      - name: Seed DB Schema
+        run: npm run seed-species && npm run seed-dives

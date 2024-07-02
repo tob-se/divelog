@@ -7,10 +7,10 @@ export default defineConfig({
   dialect: "postgresql",
   dbCredentials: {
     host: process.env.POSTGRES_HOST!,
-    user: "postgres",
-    password: "postgres",
-    database: "postgres",
     port: 5432,
-    ssl: false,
+    user: process.env.POSTGRES_USER!,
+    password: process.env.POSTGRES_PASSWORD!,
+    database: process.env.POSTGRES_DATABASE!,
+    ssl: process.env.CI ? false : true,
   },
 });
