@@ -27,7 +27,9 @@ export async function LastDiveInformation() {
       <TextTuple title="Last Dive Date">
         <DateAndTime date={dive.date} />
       </TextTuple>
-      <TextTuple title="Number of dives">{dive.number}</TextTuple>
+      <TextTuple testId="total-dives" title="Number of dives">
+        {dive.number}
+      </TextTuple>
     </div>
   );
 }
