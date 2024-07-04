@@ -1,4 +1,4 @@
-import "server-only";
+// import "server-only";
 
 import { desc } from "drizzle-orm";
 import { db } from "../drizzle/db";

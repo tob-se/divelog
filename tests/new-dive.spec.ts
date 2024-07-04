@@ -4,6 +4,8 @@ import { createUTCDate } from "@/lib/utils";
 import { deleteDives } from "./data-access/delete-dives";
 import { insertDiveDAO } from "./data-access/insert-dive-dao";
 import test, { expect } from "@playwright/test";
+import { findDiveById } from "@/infrastructure/data-access/find-dive-by-id";
+import { findLastDive } from "@/infrastructure/data-access/find-last-dive";
 
 test.describe.configure({ mode: "serial" });
 
@@ -45,7 +47,8 @@ test("new dive with previous dive in the morning", async ({ page }) => {
   const morningDive = randomDive(todayMorning);
   await insertDiveDAO(morningDive);
 
-  await page.goto("/new-dive");
+  await page.goto("/");
+  await page.getByTestId("new-dive-button").click();
 
   await expect(page.getByTestId("auto-complete-input")).toHaveValue(
     morningDive.place_main_text,
