@@ -24,7 +24,7 @@ export async function LastDiveInformation() {
 
   return (
     <div className="grid grid-cols-2 gap-3">
-      <TextTuple title="Last Dive Date">
+      <TextTuple testId="last-dive-date" title="Last Dive Date">
         <DateAndTime date={dive.date} />
       </TextTuple>
       <TextTuple testId="total-dives" title="Number of dives">

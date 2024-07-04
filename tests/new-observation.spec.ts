@@ -3,16 +3,18 @@ import { deleteDives } from "./data-access/delete-dives";
 import { insertDiveDAO } from "./data-access/insert-dive-dao";
 import { randomDive } from "./utils";
 
-test.afterEach(async () => {
-  deleteDives();
+test.beforeEach(async ({ request }) => {
+  await deleteDives();
+  await request.post("/api/revalidate");
 });
 
 test("new observations", async ({ page }) => {
-  const morningDive = randomDive();
-  await insertDiveDAO(morningDive);
+  const dive = randomDive();
+  await insertDiveDAO(dive);
 
-  await page.goto(`/dives/${morningDive.id}/observations`);
+  await page.goto(`/dives/${dive.id}/observations`);
 
+  // add Hammerhead observation
   await page.getByTestId("search-input").fill("Hammerhead");
   await page.getByTestId("specie-list-item").nth(1).click();
   await page.getByTestId("amount-input").fill("2");
@@ -25,6 +27,7 @@ test("new observations", async ({ page }) => {
     "2",
   );
 
+  // add Pikachu observation
   await page.getByTestId("search-input").fill("Pikachu");
   await page.getByTestId("specie-list-item").first().click();
   await page.getByTestId("submit-observation-button").click();
@@ -38,6 +41,7 @@ test("new observations", async ({ page }) => {
 
   await page.getByTestId("submit-button").click();
 
+  // assert observations on dive page
   await expect(page.getByTestId("observation-list-item").first()).toContainText(
     "Hammerhead",
   );
@@ -46,4 +50,10 @@ test("new observations", async ({ page }) => {
     "Pikachu",
   );
   await expect(page.getByTestId("amount").last()).toHaveText("1");
+
+  // assert observations on home page
+  await page.goto("/");
+  await expect(page.getByTestId("last-observation")).toContainText(
+    "Hammerhead",
+  );
 });

@@ -1,13 +1,12 @@
+import DiveList from "@/app/_components/dives/dive-list";
 import DivePagination from "@/app/_components/dives/dive-pagination";
 import { Button } from "@/app/_components/ui/button";
-import DateAndTime from "@/app/_components/ui/date-and-time";
 import Search from "@/app/_components/ui/search";
 import { countTotalDivePages } from "@/infrastructure/data-access/count-dives-by-site-or-place";
 import { findDivesBySiteOrPlace } from "@/infrastructure/data-access/find-dives-by-site-or-place";
 import { Filter } from "lucide-react";
-import Link from "next/link";
 
-async function DiveList({
+async function Dives({
   searchParams,
 }: {
   searchParams?: {
@@ -33,31 +32,20 @@ async function DiveList({
           <Filter />
         </Button>
       </div>
-      <ul className="flex h-full flex-col gap-2 overflow-auto" key={page}>
-        {dives.map((dive, i) => {
-          const { id, place, dive_site, date, number } = dive;
+      {dives.length > 0 ? (
+        <DiveList dives={dives} key={page} />
+      ) : (
+        <div
+          data-testid="no-dives"
+          className="rounded-sm bg-slate-50 p-2 outline-none"
+        >
+          <span className="text-sm text-muted-foreground">no dives yet</span>
+        </div>
+      )}
 
-          return (
-            <Link key={id} href={`/dives/${id}`}>
-              <li className="flex flex-col flex-nowrap gap-1 rounded-sm bg-slate-50 p-2 text-sm outline-none hover:bg-slate-100 hover:text-slate-900">
-                <div className="flex justify-between">
-                  <span className="font-bold">#{number}</span>
-                  <DateAndTime date={date} />
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-medium">{dive_site}</span>
-                  <span className="text-muted-foreground">
-                    {place.main_text}
-                  </span>
-                </div>
-              </li>
-            </Link>
-          );
-        })}
-      </ul>
       <DivePagination totalPages={totalPages} />
     </>
   );
 }
 
-export default DiveList;
+export default Dives;

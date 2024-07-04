@@ -12,13 +12,11 @@ const observation: ObservationDAO = {
   specie_id: 623965, // mobula ray
 };
 
-test.beforeEach(async () => {
+test.beforeEach(async ({ request }) => {
+  await deleteDives();
   await insertDiveDAO(dive);
   await insertObservationDAO(observation);
-});
-
-test.afterEach(async () => {
-  deleteDives();
+  await request.post("/api/revalidate");
 });
 
 test("edit amount", async ({ page }) => {
@@ -36,6 +34,7 @@ test("edit amount", async ({ page }) => {
 
   await page.getByTestId("submit-button").click();
 
+  // assert amount on dive page
   await expect(page.getByTestId("amount")).toHaveText("10");
 });
 
@@ -47,4 +46,11 @@ test("delete observation", async ({ page }) => {
   await page.getByTestId("delete-observation-button").click();
 
   await expect(page.getByTestId("observation-list-item")).toHaveCount(0);
+
+  await page.getByTestId("submit-button").click();
+  await page.waitForURL(`**/dives/${dive.id}`);
+
+  // assert observations on home page
+  await page.goto("/");
+  await expect(page.getByTestId("last-observation")).not.toBeVisible();
 });

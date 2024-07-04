@@ -12,6 +12,7 @@ export const DeleteButton = () => {
       variant="outline"
       className="h-8 bg-red-100 hover:bg-red-300"
       disabled={pending}
+      data-testid="delete-button"
     >
       Delete
     </Button>

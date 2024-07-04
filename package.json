@@ -16,7 +16,8 @@
     "studio": "drizzle-kit studio",
     "introspect": "drizzle-kit introspect",
     "ts": "tsc --noEmit --incremental",
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test-ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@next/env": "^14.2.4",
