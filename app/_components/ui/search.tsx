@@ -37,6 +37,7 @@ export default function Search({
         handleSearch(e.target.value);
       }}
       placeholder={placeholder}
+      data-testid="search-input"
     />
   );
 }

@@ -3,9 +3,11 @@ import SpecieSummary from "@/app/_components/edit-observations/specie-summary";
 import {
   Dialog,
   DialogContent,
+  DialogTitle,
   DialogTrigger,
 } from "@/app/_components/ui/dialog";
 import { Observation } from "@/types/observation";
+import * as VisuallyHidden from "@radix-ui/react-visually-hidden";
 import { Fish } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -24,6 +26,9 @@ function ObservationAmountDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-sm gap-0 space-y-0 border-0 p-0">
+        <VisuallyHidden.Root>
+          <DialogTitle>Amount</DialogTitle>
+        </VisuallyHidden.Root>
         <div className="relative aspect-[4/3]">
           {specie.medium_url ? (
             <Image

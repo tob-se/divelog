@@ -1,4 +1,5 @@
-import "server-only";
+// playwright problem
+// import "server-only";
 
 import { InferSelectModel } from "drizzle-orm";
 import { DiveTable } from "./drizzle/schema";

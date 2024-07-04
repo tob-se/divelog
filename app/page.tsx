@@ -37,7 +37,11 @@ function Home() {
         <TextTuple title="Dive Insurance">123123123</TextTuple>
       </CardContent>
       <CardFooter className="flex-wrap justify-between">
-        <NavigationButton href="/new-dive" name="New Dive">
+        <NavigationButton
+          testId="new-dive-button"
+          href="/new-dive"
+          name="New Dive"
+        >
           <Plus size={30} />
         </NavigationButton>
         <NavigationButton href="/dives" name="Logbook">

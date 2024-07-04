@@ -1,5 +1,5 @@
-import { Specie } from "@/types/specie";
 import { cn } from "@/lib/utils";
+import { Specie } from "@/types/specie";
 import { Fish } from "lucide-react";
 import Image from "next/image";
 import { forwardRef } from "react";

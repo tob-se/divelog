@@ -5,7 +5,11 @@ import { Observation } from "@/types/observation";
 function EditObservationButton({ observation }: { observation: Observation }) {
   return (
     <ObservationAmountDialog observation={observation}>
-      <Button variant="outline" className="h-8 w-8 p-1.5">
+      <Button
+        data-testid="edit-observation-button"
+        variant="outline"
+        className="h-8 w-8 p-1.5"
+      >
         {observation.amount}
       </Button>
     </ObservationAmountDialog>

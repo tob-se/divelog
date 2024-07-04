@@ -21,16 +21,20 @@ function TimeToggleGroup({
       }}
       size="sm"
     >
-      <ToggleGroupItem variant="outline" value="6">
+      <ToggleGroupItem data-testid="morning-toggle" variant="outline" value="6">
         <Sunrise className="h-4 w-4" />
       </ToggleGroupItem>
-      <ToggleGroupItem variant="outline" value="10">
+      <ToggleGroupItem data-testid="noon-toggle" variant="outline" value="10">
         <Sun className="h-4 w-4" />
       </ToggleGroupItem>
-      <ToggleGroupItem variant="outline" value="14">
+      <ToggleGroupItem
+        data-testid="afternoon-toggle"
+        variant="outline"
+        value="14"
+      >
         <Sunset className="h-4 w-4" />
       </ToggleGroupItem>
-      <ToggleGroupItem variant="outline" value="18">
+      <ToggleGroupItem data-testid="night-toggle" variant="outline" value="18">
         <Moon className="h-4 w-4" />
       </ToggleGroupItem>
     </ToggleGroup>

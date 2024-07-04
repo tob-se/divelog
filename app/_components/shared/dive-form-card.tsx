@@ -51,7 +51,11 @@ export default function DiveFormCard({
     <Card>
       <CardHeader className="flex-row justify-between space-y-0">
         <CardTitle>Dive #{diveNumber}</CardTitle>
-        <Switch.Root defaultChecked={dive?.highlight} name="highlight">
+        <Switch.Root
+          defaultChecked={dive?.highlight}
+          name="highlight"
+          data-testid="highlight-switch"
+        >
           <Switch.Thumb asChild>
             <Star className="data-[state=checked]:fill-yellow-300" />
           </Switch.Thumb>
@@ -103,6 +107,7 @@ export default function DiveFormCard({
             name="dive_site"
             placeholder="Barracuda Point"
             defaultValue={dive?.dive_site}
+            data-testid="dive-site-input"
             required
           />
           <FormErrors errors={formState.errors?.dive_site} />
@@ -115,6 +120,7 @@ export default function DiveFormCard({
             placeholder="Best dive ever"
             className="min-h-[60px]"
             defaultValue={dive?.comment}
+            data-testid="comment"
           />
           <FormErrors errors={formState.errors?.comment} />
         </div>

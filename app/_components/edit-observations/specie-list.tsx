@@ -21,6 +21,7 @@ export default function SpecieList({ species }: { species: Specie[] }) {
             <SpecieListItem
               specie={specie}
               className="cursor-pointer hover:bg-slate-100 hover:text-slate-900"
+              data-testid="specie-list-item"
             />
           </ObservationAmountDialog>
           <ListSeparator length={filteredSpecies.length} index={index} />

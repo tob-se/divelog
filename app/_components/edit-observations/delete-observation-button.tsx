@@ -10,6 +10,7 @@ function DeleteObservationButton({ specieId }: { specieId: number }) {
       onClick={() => deleteObservation(specieId)}
       variant="outline"
       className="h-8 w-8 p-1.5"
+      data-testid="delete-observation-button"
     >
       <Trash2 />
     </Button>

@@ -25,25 +25,29 @@ async function Dive({ params }: { params: { id: string } }) {
     <>
       <CardHeader>
         <div className="flex flex-row items-center justify-between">
-          <CardTitle>Dive #{dive.number}</CardTitle>
-          <Star fill={highlight ? "gold" : "white"} />
+          <CardTitle data-testid="dive-title">Dive #{dive.number}</CardTitle>
+          <Star data-testid="highlight" fill={highlight ? "gold" : "white"} />
         </div>
         <DateAndTime date={date} />
       </CardHeader>
       <CardContent className="overflow-auto text-sm">
         <div className="grid grid-cols-2 gap-3">
-          <TextTuple title="Location">
+          <TextTuple testId="location" title="Location">
             <address className="grid gap-0.5 not-italic">
               <span>{place.main_text}</span>
               <span>{place.secondary_text}</span>
             </address>
           </TextTuple>
-          <TextTuple title="Dive Site">{dive_site}</TextTuple>
+          <TextTuple testId="dive-site" title="Dive Site">
+            {dive_site}
+          </TextTuple>
         </div>
         {comment && (
           <>
             <Separator className="my-2" />
-            <TextTuple title="Comment">{comment}</TextTuple>
+            <TextTuple testId="comment" title="Comment">
+              {comment}
+            </TextTuple>
           </>
         )}
         {observations.length > 0 && (
@@ -54,8 +58,14 @@ async function Dive({ params }: { params: { id: string } }) {
                 {observations.map((o, i) => {
                   return (
                     <Fragment key={o.specie.id}>
-                      <SpecieListItem specie={o.specie}>
-                        <div className="ml-auto inline-flex h-8 w-8 items-center justify-center whitespace-nowrap rounded-md border bg-background p-1.5 text-muted-foreground">
+                      <SpecieListItem
+                        data-testid="observation-list-item"
+                        specie={o.specie}
+                      >
+                        <div
+                          data-testid="amount"
+                          className="ml-auto inline-flex h-8 w-8 items-center justify-center whitespace-nowrap rounded-md border bg-background p-1.5 text-muted-foreground"
+                        >
                           {o.amount}
                         </div>
                       </SpecieListItem>

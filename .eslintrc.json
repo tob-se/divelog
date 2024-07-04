@@ -10,6 +10,11 @@
             "target": "app",
             "from": "infrastructure/drizzle",
             "message": "Importing any files from drizzle inside app is disallowed."
+          },
+          {
+            "target": "app",
+            "from": "tests",
+            "message": "Importing any files from tests inside app is disallowed."
           }
         ]
       }

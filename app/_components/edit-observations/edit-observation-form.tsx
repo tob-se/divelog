@@ -5,6 +5,7 @@ import { Label } from "@/app/_components/ui/label";
 import { Observation } from "@/types/observation";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useObservationContext } from "./observation-context";
+import SubmitButton from "../ui/submit-button";
 
 function EditObservationForm({
   observation,
@@ -45,13 +46,12 @@ function EditObservationForm({
           type="number"
           min={1}
           defaultValue={observation.amount}
+          data-testid="amount-input"
           required
         />
       </div>
       <DialogFooter className="pt-5">
-        <Button size="sm" type="submit">
-          Save
-        </Button>
+        <SubmitButton testId="submit-observation-button" />
       </DialogFooter>
     </form>
   );

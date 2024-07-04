@@ -98,6 +98,7 @@ export const AutoComplete = ({
         }}
         placeholder={placeholder}
         disabled={disabled}
+        data-testid="auto-complete-input"
         required
       />
       <div className="relative">
@@ -125,6 +126,7 @@ export const AutoComplete = ({
                       }}
                       onSelect={() => handleSelectOption(option)}
                       className={"grid w-full grid-cols-[24px_auto]"}
+                      data-testid="auto-complete-item"
                     >
                       {isSelected ? <Check className="w-4" /> : <div />}
                       <div className="flex flex-col gap-0.5">

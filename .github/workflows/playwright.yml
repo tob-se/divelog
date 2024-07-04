@@ -53,7 +53,7 @@ jobs:
         run: npm run push
 
       - name: Seed DB
-        run: npm run seed-species && npm run seed-dives
+        run: npm run seed-species
 
       - name: Build
         run: npm run build

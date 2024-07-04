@@ -6,13 +6,15 @@ function NavigationButton<T extends string>({
   href,
   children,
   name,
+  testId,
 }: {
   href: Route<T> | URL;
   name: string;
+  testId?: string;
   children: React.ReactNode;
 }) {
   return (
-    <Link href={href}>
+    <Link href={href} data-testid={testId}>
       <Button
         variant="outline"
         className="flex h-20 w-20 flex-col items-center gap-2"
