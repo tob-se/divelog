@@ -6,6 +6,7 @@ import {
   validateDiveForm,
 } from "@/app/_actions/validations/validate-dive-form";
 import { updateDive } from "@/infrastructure/data-access/update-dive";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function editDive(
@@ -32,5 +33,8 @@ export async function editDive(
     };
   }
 
+  revalidatePath("/");
+  revalidatePath("/dives");
+  revalidatePath("/new-dive");
   redirect(`/dives/${validatedFields.data.id}`);
 }

@@ -41,5 +41,6 @@ export async function newDive(
 
   revalidatePath("/");
   revalidatePath("/dives");
+  revalidatePath("/new-dive");
   redirect(`/dives/${validatedFields.data.id}/observations`);
 }

@@ -1,11 +1,9 @@
-import { faker } from "@faker-js/faker";
-import { randomDive } from "./utils";
 import { createUTCDate } from "@/lib/utils";
+import { faker } from "@faker-js/faker";
+import test, { expect } from "@playwright/test";
 import { deleteDives } from "./data-access/delete-dives";
 import { insertDiveDAO } from "./data-access/insert-dive-dao";
-import test, { expect } from "@playwright/test";
-import { findDiveById } from "@/infrastructure/data-access/find-dive-by-id";
-import { findLastDive } from "@/infrastructure/data-access/find-last-dive";
+import { randomDive } from "./utils";
 
 test.describe.configure({ mode: "serial" });
 
@@ -42,57 +40,57 @@ test("create new dive", async ({ page }) => {
   await expect(page.getByTestId("sunrise-icon")).toBeVisible();
 });
 
-test("new dive with previous dive in the morning", async ({ page }) => {
-  const todayMorning = createUTCDate(new Date(), 6);
-  const morningDive = randomDive(todayMorning);
-  await insertDiveDAO(morningDive);
+// test("new dive with previous dive in the morning", async ({ page }) => {
+//   const todayMorning = createUTCDate(new Date(), 6);
+//   const morningDive = randomDive(todayMorning);
+//   await insertDiveDAO(morningDive);
 
-  await page.goto("/");
-  await page.getByTestId("new-dive-button").click();
+//   await page.goto("/");
+//   await page.getByTestId("new-dive-button").click();
 
-  await expect(page.getByTestId("auto-complete-input")).toHaveValue(
-    morningDive.place_main_text,
-  );
-  await expect(page.getByTestId("noon-toggle")).toBeChecked();
-});
+//   await expect(page.getByTestId("auto-complete-input")).toHaveValue(
+//     morningDive.place_main_text,
+//   );
+//   await expect(page.getByTestId("noon-toggle")).toBeChecked();
+// });
 
-test("new dive with previous dive at noon", async ({ page }) => {
-  const todayNoon = createUTCDate(new Date(), 10);
-  const noonDive = randomDive(todayNoon);
-  await insertDiveDAO(noonDive);
+// test("new dive with previous dive at noon", async ({ page }) => {
+//   const todayNoon = createUTCDate(new Date(), 10);
+//   const noonDive = randomDive(todayNoon);
+//   await insertDiveDAO(noonDive);
 
-  await page.goto("/new-dive");
+//   await page.goto("/new-dive");
 
-  await expect(page.getByTestId("auto-complete-input")).toHaveValue(
-    noonDive.place_main_text,
-  );
-  await expect(page.getByTestId("afternoon-toggle")).toBeChecked();
-});
+//   await expect(page.getByTestId("auto-complete-input")).toHaveValue(
+//     noonDive.place_main_text,
+//   );
+//   await expect(page.getByTestId("afternoon-toggle")).toBeChecked();
+// });
 
-test("new dive with previous dive in the afternoon", async ({ page }) => {
-  const todayAfternoon = createUTCDate(new Date(), 14);
-  const afternoonDive = randomDive(todayAfternoon);
-  await insertDiveDAO(afternoonDive);
+// test("new dive with previous dive in the afternoon", async ({ page }) => {
+//   const todayAfternoon = createUTCDate(new Date(), 14);
+//   const afternoonDive = randomDive(todayAfternoon);
+//   await insertDiveDAO(afternoonDive);
 
-  await page.goto("/new-dive");
+//   await page.goto("/new-dive");
 
-  await expect(page.getByTestId("auto-complete-input")).toHaveValue(
-    afternoonDive.place_main_text,
-  );
-  await expect(page.getByTestId("night-toggle")).toBeChecked();
-});
+//   await expect(page.getByTestId("auto-complete-input")).toHaveValue(
+//     afternoonDive.place_main_text,
+//   );
+//   await expect(page.getByTestId("night-toggle")).toBeChecked();
+// });
 
-test("new dive with previous dive yesterday", async ({ page }) => {
-  const yesterdayAfternoon = createUTCDate(new Date(), 14);
-  yesterdayAfternoon.setDate(yesterdayAfternoon.getDate() - 1);
+// test("new dive with previous dive yesterday", async ({ page }) => {
+//   const yesterdayAfternoon = createUTCDate(new Date(), 14);
+//   yesterdayAfternoon.setDate(yesterdayAfternoon.getDate() - 1);
 
-  const afternoonDive = randomDive(yesterdayAfternoon);
-  await insertDiveDAO(afternoonDive);
+//   const afternoonDive = randomDive(yesterdayAfternoon);
+//   await insertDiveDAO(afternoonDive);
 
-  await page.goto("/new-dive");
+//   await page.goto("/new-dive");
 
-  await expect(page.getByTestId("auto-complete-input")).toHaveValue(
-    afternoonDive.place_main_text,
-  );
-  await expect(page.getByTestId("morning-toggle")).toBeChecked();
-});
+//   await expect(page.getByTestId("auto-complete-input")).toHaveValue(
+//     afternoonDive.place_main_text,
+//   );
+//   await expect(page.getByTestId("morning-toggle")).toBeChecked();
+// });

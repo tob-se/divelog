@@ -32,6 +32,7 @@ export const editObservations = async (
   }
 
   const { diveId } = validatedForm.data;
+  revalidatePath("/");
   revalidatePath(`/dives/${diveId}/observations`);
   redirect(`/dives/${diveId}`);
 };

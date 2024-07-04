@@ -27,6 +27,8 @@ export const removeDive = async (
     };
   }
 
+  revalidatePath("/");
+  revalidatePath("/new-dive");
   revalidatePath("/dives");
   redirect("/dives");
 };
