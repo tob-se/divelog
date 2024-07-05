@@ -48,7 +48,13 @@ test("delete observation", async ({ page }) => {
   await expect(page.getByTestId("observation-list-item")).toHaveCount(0);
 
   await page.getByTestId("submit-button").click();
+
+  // wait for dive page
   await page.waitForURL(`**/dives/${dive.id}`);
+  await expect(page.getByTestId("dive-fallback")).not.toBeVisible();
+
+  // assert observations on dive page
+  await expect(page.getByTestId("observation-list-item")).toHaveCount(0);
 
   // assert observations on home page
   await page.goto("/");

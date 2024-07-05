@@ -50,7 +50,7 @@ export default function DiveFormCard({
   return (
     <Card>
       <CardHeader className="flex-row justify-between space-y-0">
-        <CardTitle>Dive #{diveNumber}</CardTitle>
+        <CardTitle data-testid="dive-title">Dive #{diveNumber}</CardTitle>
         <Switch.Root
           defaultChecked={dive?.highlight}
           name="highlight"

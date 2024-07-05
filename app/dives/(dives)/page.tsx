@@ -39,7 +39,7 @@ async function Dives({
           data-testid="no-dives"
           className="rounded-sm bg-slate-50 p-2 outline-none"
         >
-          <span className="text-sm text-muted-foreground">no dives yet</span>
+          <span className="text-sm text-muted-foreground">no dives found</span>
         </div>
       )}
 

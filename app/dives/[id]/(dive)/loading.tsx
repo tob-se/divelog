@@ -4,7 +4,7 @@ import { Skeleton } from "@/app/_components/ui/skeleton";
 function DiveFallback() {
   return (
     <>
-      <CardHeader>
+      <CardHeader data-testid="dive-fallback">
         <div className="flex flex-row items-center justify-between">
           <Skeleton className="h-6 w-24 bg-muted-foreground/10" />
           <Skeleton className="h-6 w-6 rounded-full bg-muted-foreground/10" />
