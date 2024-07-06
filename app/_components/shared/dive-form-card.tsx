@@ -25,7 +25,7 @@ import { format } from "date-fns";
 import { CalendarIcon, Star } from "lucide-react";
 import Link from "next/link";
 import FormErrors from "../ui/form-errors";
-import PlacesAutocomplete from "./places-autocomplete";
+import PlacesAutocomplete from "./autocomplete/places-autocomplete";
 import TimeToggleGroup from "./time-toggle-group";
 
 type Props = {
