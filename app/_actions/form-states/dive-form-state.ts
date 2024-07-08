@@ -8,5 +8,6 @@ export type DiveFormState = GenericFormState & {
     dive_site?: string[];
     highlight?: string[];
     place?: string[];
+    dive_time?: string[];
   };
 };

@@ -4,7 +4,7 @@ import { Dive } from "@/types/dive";
 
 function TimeRadioGroup({ time }: { time?: Dive["dive_time"] }) {
   return (
-    <RadioGroup name="dive_time" defaultValue={time}>
+    <RadioGroup required name="dive_time" defaultValue={time}>
       <RadioGroupItem
         icon={<Sunrise className="h-4 w-4" />}
         value="morning"
