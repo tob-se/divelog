@@ -11,9 +11,10 @@ export const SelectDive = {
     main_text: DiveTable.place_main_text,
     secondary_text: DiveTable.place_secondary_text,
   },
-  number: sql<number>`ROW_NUMBER() OVER (ORDER BY ${DiveTable.date})`
-    .mapWith(Number)
-    .as("number"),
+  number:
+    sql<number>`ROW_NUMBER() OVER (ORDER BY ${DiveTable.date}, ${DiveTable.dive_time})`
+      .mapWith(Number)
+      .as("number"),
 };
 
 const { observations, ...restSpecie } = { ...getTableColumns(SpecieTable) };

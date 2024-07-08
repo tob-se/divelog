@@ -19,7 +19,7 @@ async function Dive({ params }: { params: { id: string } }) {
     notFound();
   }
 
-  const { comment, date, highlight, place, dive_site } = dive;
+  const { comment, date, highlight, place, dive_site, dive_time } = dive;
 
   return (
     <>
@@ -28,7 +28,7 @@ async function Dive({ params }: { params: { id: string } }) {
           <CardTitle data-testid="dive-title">Dive #{dive.number}</CardTitle>
           <Star data-testid="highlight" fill={highlight ? "gold" : "white"} />
         </div>
-        <DateAndTime date={date} />
+        <DateAndTime date={date} time={dive_time} />
       </CardHeader>
       <CardContent className="overflow-auto text-sm">
         <div className="grid grid-cols-2 gap-3">

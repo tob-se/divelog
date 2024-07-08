@@ -2,11 +2,12 @@
 
 import {
   boolean,
+  date,
   integer,
+  pgEnum,
   pgTable,
   primaryKey,
   text,
-  timestamp,
   uuid,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
@@ -21,15 +22,23 @@ export const SpecieTable = pgTable("specie", {
   wikipedia_url: text("wikipedia_url"),
 });
 
+export const diveTimeEnum = pgEnum("dive_time", [
+  "morning",
+  "noon",
+  "afternoon",
+  "night",
+]);
+
 export const DiveTable = pgTable("dive", {
   id: uuid("id").primaryKey(),
-  date: timestamp("date", { mode: "date" }).notNull(),
+  date: date("date", { mode: "date" }).notNull(),
   place_id: text("place_id").notNull(),
   place_main_text: text("place_main_text").notNull(),
   place_secondary_text: text("place_secondary_text"),
   dive_site: text("dive_site").notNull(),
   comment: text("comment").notNull(),
   highlight: boolean("highlight").notNull(),
+  dive_time: diveTimeEnum("dive_time").notNull(),
 });
 
 export const ObservationTable = pgTable(

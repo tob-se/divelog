@@ -12,12 +12,11 @@ import DiveFormCard from "../shared/dive-form-card";
 const initialState: DiveFormState = { message: undefined, errors: undefined };
 
 export default function EditDiveForm({ dive }: { dive: Dive }) {
-  const { date: initialDate, place: initialPlace, id, number } = dive;
+  const { place: initialPlace, id, number } = dive;
 
-  const [date, setDate] = useState<Date>(initialDate);
   const [place, setPlace] = useState<Place | undefined>(initialPlace);
 
-  const actionWithState = editDive.bind(null, { date, place, id });
+  const actionWithState = editDive.bind(null, { place, id });
   const [state, dispatch] = useFormState(actionWithState, initialState);
 
   useMessageToast("Failed to edit dive", state);
@@ -25,9 +24,7 @@ export default function EditDiveForm({ dive }: { dive: Dive }) {
   return (
     <form action={dispatch}>
       <DiveFormCard
-        date={date}
         place={place}
-        setDate={setDate}
         dive={dive}
         setPlace={setPlace}
         diveNumber={number}

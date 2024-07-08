@@ -8,7 +8,7 @@ import { NewDive } from "@/types/new-dive";
 export type DiveDAO = InferSelectModel<typeof DiveTable>;
 
 export const toDiveDAO = (dive: NewDive): DiveDAO => {
-  const { comment, date, dive_site, highlight, id, place } = dive;
+  const { comment, date, dive_site, highlight, id, place, dive_time } = dive;
 
   return {
     comment,
@@ -16,6 +16,7 @@ export const toDiveDAO = (dive: NewDive): DiveDAO => {
     dive_site,
     highlight,
     id,
+    dive_time,
     place_id: place.id,
     place_main_text: place.main_text,
     place_secondary_text: place.secondary_text || null,

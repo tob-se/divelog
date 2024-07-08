@@ -3,7 +3,7 @@ import { Dive } from "@/types/dive";
 import Link from "next/link";
 
 function DiveListItem({ dive }: { dive: Dive }) {
-  const { id, place, dive_site, date, number } = dive;
+  const { id, place, dive_site, date, number, dive_time } = dive;
 
   return (
     <Link href={`/dives/${id}`}>
@@ -15,7 +15,7 @@ function DiveListItem({ dive }: { dive: Dive }) {
           <span data-testid="dive-item-number" className="font-bold">
             #{number}
           </span>
-          <DateAndTime date={date} />
+          <DateAndTime date={date} time={dive_time} />
         </div>
         <div className="flex flex-col">
           <span data-testid="dive-item-site" className="font-medium">

@@ -34,14 +34,14 @@ test("create new dive", async ({ page }) => {
   await expect(page.getByTestId("comment")).toHaveText(comment);
   await expect(page.getByTestId("location")).toContainText(location);
   await expect(page.getByTestId("date-and-time")).toHaveText(
-    new Date().toLocaleDateString(),
+    new Date().toLocaleDateString("en-GB"),
   );
   await expect(page.getByTestId("sunrise-icon")).toBeVisible();
 
   // assert dive on home page
   await page.goto("/");
   await expect(page.getByTestId("last-dive-date")).toHaveText(
-    new Date().toLocaleDateString(),
+    new Date().toLocaleDateString("en-GB"),
   );
   await expect(page.getByTestId("total-dives")).toHaveText("1");
 
@@ -57,5 +57,5 @@ test("create new dive", async ({ page }) => {
   await page.goto("/new-dive");
   await expect(page.getByTestId("auto-complete-input")).toHaveValue(location);
   await expect(page.getByTestId("dive-title")).toHaveText("Dive #2");
-  await expect(page.getByTestId("noon-toggle")).toBeChecked();
+  await expect(page.getByTestId("noon-radio-item")).toBeChecked();
 });

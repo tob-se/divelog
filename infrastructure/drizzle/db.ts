@@ -6,12 +6,13 @@ import * as schema from "./schema";
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
 
-const pool = new Pool({
-  host: process.env.POSTGRES_HOST,
-  user: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DATABASE,
-  ssl: !!process.env.VERCEL,
-});
+const pool = process.env.POSTGRES_URL
+  ? new Pool({ connectionString: process.env.POSTGRES_URL })
+  : new Pool({
+      host: process.env.POSTGRES_HOST,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DATABASE,
+    });
 
 export const db = drizzle(pool, { schema });

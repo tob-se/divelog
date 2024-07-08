@@ -5,19 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function createUTCDate(date: Date, hour: number) {
-  return new Date(
-    Date.UTC(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate(),
-      hour,
-      date.getMinutes(),
-      date.getSeconds(),
-    ),
-  );
-}
-
 export const generatePagination = (currentPage: number, totalPages: number) => {
   // If the total number of pages is 4 or less,
   // display all pages without any ellipsis.

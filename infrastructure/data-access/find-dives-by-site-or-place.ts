@@ -12,7 +12,7 @@ export const findDivesBySiteOrPlace = async (query: string, page: number) => {
   const dives = await db
     .select(SelectDive)
     .from(DiveTable)
-    .orderBy(desc(DiveTable.date))
+    .orderBy(desc(DiveTable.date), desc(DiveTable.dive_time))
     .where(
       query
         ? or(

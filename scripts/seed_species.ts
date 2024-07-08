@@ -15,9 +15,6 @@ async function main() {
     wikipedia_url: specie.wikipedia_url,
   }));
 
-  await db.delete(ObservationTable);
-  console.log("deleted observation table");
-
   await db.delete(SpecieTable);
   console.log("deleted specie table");
 

@@ -86,9 +86,9 @@ export const AutocompleteInput = ({
           setOpen(true);
 
           // in case of default value, fetch options via setValue
-          if (value && options.length === 0) {
-            setValue(value);
-          }
+          // if (value && options.length === 0) {
+          //   setValue(value);
+          // }
         }}
         placeholder={placeholder}
         data-testid="auto-complete-input"

@@ -9,8 +9,8 @@ export const DeleteButton = () => {
   return (
     <Button
       size="sm"
-      variant="outline"
-      className="h-8 bg-red-100 hover:bg-red-300"
+      variant="destructive"
+      className="h-8"
       disabled={pending}
       data-testid="delete-button"
     >
