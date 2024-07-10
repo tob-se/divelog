@@ -5,7 +5,7 @@ import { ObservationDAO } from "@/infrastructure/observation-dao";
 import { faker } from "@faker-js/faker";
 import species from "./species.json";
 import { INatSpecie } from "./types";
-import { randomDive } from "@/tests/utils";
+import { randomDive } from "@/e2e/utils";
 
 async function main() {
   await db.delete(DiveTable);

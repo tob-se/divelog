@@ -1,6 +1,6 @@
 import { revalidatePath } from "next/cache";
 
-// onyl used for e2e tests
+// only used for e2e tests
 export async function POST() {
   revalidatePath("/");
   revalidatePath("/dives");

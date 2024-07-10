@@ -31,7 +31,7 @@ export const diveTimeEnum = pgEnum("dive_time", [
 
 export const DiveTable = pgTable("dive", {
   id: uuid("id").primaryKey(),
-  date: date("date", { mode: "date" }).notNull(),
+  date: date("date", { mode: "string" }).notNull(),
   place_id: text("place_id").notNull(),
   place_main_text: text("place_main_text").notNull(),
   place_secondary_text: text("place_secondary_text"),

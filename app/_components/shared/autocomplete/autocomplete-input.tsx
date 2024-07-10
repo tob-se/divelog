@@ -7,7 +7,6 @@ import AutocompleteList from "./autocomplete-list";
 type Props = {
   options: Place[];
   value: string;
-  showList: boolean;
   setValue: (value: string) => void;
   selected?: Place;
   setSelected: (s: Place) => void;
@@ -19,7 +18,6 @@ export const AutocompleteInput = ({
   options,
   placeholder,
   value,
-  showList,
   setValue,
   selected,
   setSelected,
@@ -82,20 +80,13 @@ export const AutocompleteInput = ({
         value={value}
         onValueChange={isLoading ? undefined : setValue}
         onBlur={handleBlur}
-        onFocus={() => {
-          setOpen(true);
-
-          // in case of default value, fetch options via setValue
-          // if (value && options.length === 0) {
-          //   setValue(value);
-          // }
-        }}
+        onFocus={() => setOpen(true)}
         placeholder={placeholder}
         data-testid="auto-complete-input"
         required
       />
       <div className="relative">
-        {isOpen && showList && (
+        {isOpen && (
           <AutocompleteList
             options={options}
             handleSelectOption={handleSelectOption}

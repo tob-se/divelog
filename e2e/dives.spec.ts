@@ -1,10 +1,10 @@
 import test, { expect } from "@playwright/test";
-import { deleteDives } from "./data-access/delete-dives";
-import { insertDivesDAO } from "./data-access/insert-dives-dao";
+import { deleteDives } from "../test-utils/data-access/delete-dives";
+import { insertDivesDAO } from "../test-utils/data-access/insert-dives-dao";
 import { randomDive } from "./utils";
 
 const dives = Array.from({ length: 25 }, randomDive)
-  .sort((a, b) => a.date.getTime() - b.date.getTime())
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
   .map((dive, i) => {
     if (i < 10) {
       dive.dive_site = "Barracuda Point";

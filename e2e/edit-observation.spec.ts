@@ -1,8 +1,8 @@
 import { ObservationDAO } from "@/infrastructure/observation-dao";
 import test, { expect } from "@playwright/test";
-import { deleteDives } from "./data-access/delete-dives";
-import { insertDiveDAO } from "./data-access/insert-dive-dao";
-import { insertObservationDAO } from "./data-access/insert-observation-dao";
+import { deleteDives } from "../test-utils/data-access/delete-dives";
+import { insertDiveDAO } from "../test-utils/data-access/insert-dive-dao";
+import { insertObservationDAO } from "../test-utils/data-access/insert-observation-dao";
 import { randomDive } from "./utils";
 
 const dive = randomDive();

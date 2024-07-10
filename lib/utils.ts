@@ -5,6 +5,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const getTodayWithoutTimezone = () => {
+  let today = new Date();
+  const offset = today.getTimezoneOffset();
+  today = new Date(today.getTime() - offset * 60 * 1000);
+
+  return today.toISOString().split("T")[0];
+};
+
 export const generatePagination = (currentPage: number, totalPages: number) => {
   // If the total number of pages is 4 or less,
   // display all pages without any ellipsis.

@@ -6,7 +6,7 @@ export const randomDive = (): DiveDAO => {
   return {
     id: randomUUID(),
     comment: faker.lorem.lines(),
-    date: faker.date.past(),
+    date: faker.date.past().toISOString().substring(0, 10),
     dive_time: faker.helpers.arrayElement([
       "morning",
       "noon",

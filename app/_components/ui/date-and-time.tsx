@@ -17,12 +17,14 @@ const TimeIcon = ({ time }: { time: Dive["dive_time"] }) => {
   }
 };
 
+const formatDate = (date: string) => date.split("-").reverse().join("/");
+
 function DateAndTime({
   date,
   time,
   className,
 }: {
-  date: Date;
+  date: string;
   time: Dive["dive_time"];
   className?: string;
 }) {
@@ -34,7 +36,7 @@ function DateAndTime({
       )}
       data-testid="date-and-time"
     >
-      <span>{date.toLocaleDateString("en-GB")}</span>
+      <span>{formatDate(date)}</span>
       <TimeIcon time={time} />
     </div>
   );

@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import test, { expect } from "@playwright/test";
-import { deleteDives } from "./data-access/delete-dives";
+import { deleteDives } from "../test-utils/data-access/delete-dives";
 
 test.beforeEach(async ({ request }) => {
   await deleteDives();

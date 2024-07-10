@@ -8,17 +8,14 @@ import { useState } from "react";
 import { useFormState } from "react-dom";
 import { newDive } from "../../_actions/new-dive.action";
 import DiveFormCard from "../shared/dive-form-card";
+import { getTodayWithoutTimezone } from "@/lib/utils";
 
-const isToday = (someDate: Date) => {
-  const today = new Date();
-  return (
-    someDate.getDate() == today.getDate() &&
-    someDate.getMonth() == today.getMonth() &&
-    someDate.getFullYear() == today.getFullYear()
-  );
+const isToday = (date: string) => {
+  const today = getTodayWithoutTimezone();
+  return date === today;
 };
 
-const getNextDiveTime = (date?: Date, time?: Dive["dive_time"]) => {
+const getNextDiveTime = (date?: string, time?: Dive["dive_time"]) => {
   if (!date || !isToday(date)) return "morning";
 
   if (time === "morning") return "noon";
@@ -38,7 +35,7 @@ export default function CreateDiveForm({
 }: {
   diveNumber: number;
   lastPlace?: Place;
-  lastDate?: Date;
+  lastDate?: string;
   lastDiveTime?: Dive["dive_time"];
 }) {
   const [place, setPlace] = useState<Place | undefined>(lastPlace);

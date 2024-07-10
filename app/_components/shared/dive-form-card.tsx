@@ -19,6 +19,7 @@ import * as Switch from "@radix-ui/react-switch";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import SubmitButton from "../ui/submit-button";
+import { getTodayWithoutTimezone } from "@/lib/utils";
 
 type Props = {
   dive?: Dive;
@@ -29,10 +30,6 @@ type Props = {
   nextDiveTime?: Dive["dive_time"];
 };
 
-const getInitialDate = (date = new Date()) => {
-  return date.toISOString().substring(0, 10);
-};
-
 export default function DiveFormCard({
   dive,
   place,
@@ -41,8 +38,6 @@ export default function DiveFormCard({
   formState,
   nextDiveTime,
 }: Props) {
-  const initialDate = getInitialDate(dive?.date);
-
   return (
     <Card>
       <CardHeader className="flex-row justify-between space-y-0">
@@ -66,7 +61,8 @@ export default function DiveFormCard({
               name="date"
               type="date"
               required
-              defaultValue={initialDate}
+              defaultValue={dive?.date || getTodayWithoutTimezone()}
+              data-testid="date-input"
             />
             <FormErrors errors={formState.errors?.date} />
           </div>
