@@ -1,14 +1,14 @@
 import { loadEnvConfig } from "@next/env";
-import { drizzle } from "drizzle-orm/node-postgres";
-import { Pool } from "pg";
 import * as schema from "./schema";
+import postgres from "postgres";
+import { drizzle } from "drizzle-orm/postgres-js";
 
 const projectDir = process.cwd();
 loadEnvConfig(projectDir);
 
-const pool = process.env.POSTGRES_URL
-  ? new Pool({ connectionString: process.env.POSTGRES_URL })
-  : new Pool({
+const queryClient = process.env.POSTGRES_URL
+  ? postgres(process.env.POSTGRES_URL)
+  : postgres({
       host: process.env.POSTGRES_HOST,
       user: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
@@ -16,4 +16,4 @@ const pool = process.env.POSTGRES_URL
       ssl: false,
     });
 
-export const db = drizzle(pool, { schema });
+export const db = drizzle(queryClient, { schema });
