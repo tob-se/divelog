@@ -4,7 +4,7 @@ import { Skeleton } from "@/app/_components/ui/skeleton";
 import { findLastDive } from "@/infrastructure/data-access/find-last-dive";
 import TextTuple from "../ui/text-tuple";
 
-export async function LastDiveInformationFallback() {
+export function LastDiveInformationFallback() {
   return (
     <div className="grid grid-cols-2 gap-3">
       <GenericTuple title="Last Dive Date">

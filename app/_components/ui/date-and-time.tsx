@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
-import { Dive } from "@/types/dive";
+import { DiveTime } from "@/types/dive-time";
 import { Moon, Sun, Sunrise, Sunset } from "lucide-react";
 
-const TimeIcon = ({ time }: { time: Dive["dive_time"] }) => {
+const TimeIcon = ({ time }: { time: DiveTime }) => {
   if (time === "morning") {
     return <Sunrise data-testid="sunrise-icon" className="h-[1em] w-[1em]" />;
   }
@@ -25,7 +25,7 @@ function DateAndTime({
   className,
 }: {
   date: string;
-  time: Dive["dive_time"];
+  time: DiveTime;
   className?: string;
 }) {
   return (

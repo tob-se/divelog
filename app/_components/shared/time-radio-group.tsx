@@ -1,8 +1,8 @@
+import { DiveTime } from "@/types/dive-time";
 import { Moon, Sun, Sunrise, Sunset } from "lucide-react";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Dive } from "@/types/dive";
 
-function TimeRadioGroup({ time }: { time?: Dive["dive_time"] }) {
+function TimeRadioGroup({ time }: { time?: DiveTime }) {
   return (
     <RadioGroup required name="dive_time" defaultValue={time}>
       <RadioGroupItem

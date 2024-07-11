@@ -9,17 +9,18 @@ import {
 import { Input } from "@/app/_components/ui/input";
 import { Label } from "@/app/_components/ui/label";
 import { Textarea } from "@/app/_components/ui/textarea";
+import { todayWithoutTimezone } from "@/lib/utils";
 import { Dive } from "@/types/dive";
+import { DiveTime } from "@/types/dive-time";
 import { Place } from "@/types/place";
-import FormErrors from "../ui/form-errors";
-import PlacesAutocomplete from "./autocomplete/places-autocomplete";
-import TimeRadioGroup from "./time-radio-group";
-import { Star } from "lucide-react";
 import * as Switch from "@radix-ui/react-switch";
+import { Star } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import FormErrors from "../ui/form-errors";
 import SubmitButton from "../ui/submit-button";
-import { getTodayWithoutTimezone } from "@/lib/utils";
+import PlacesAutocomplete from "./autocomplete/places-autocomplete";
+import TimeRadioGroup from "./time-radio-group";
 
 type Props = {
   dive?: Dive;
@@ -27,7 +28,7 @@ type Props = {
   setPlace: (p: Place) => void;
   diveNumber: number;
   formState: DiveFormState;
-  nextDiveTime?: Dive["dive_time"];
+  nextDiveTime?: DiveTime;
 };
 
 export default function DiveFormCard({
@@ -61,7 +62,7 @@ export default function DiveFormCard({
               name="date"
               type="date"
               required
-              defaultValue={dive?.date || getTodayWithoutTimezone()}
+              defaultValue={dive?.date || todayWithoutTimezone()}
               data-testid="date-input"
             />
             <FormErrors errors={formState.errors?.date} />

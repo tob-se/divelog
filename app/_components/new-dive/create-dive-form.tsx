@@ -2,20 +2,20 @@
 
 import { DiveFormState } from "@/app/_actions/form-states/dive-form-state";
 import { useMessageToast } from "@/app/_hooks/useMessageToast";
-import { Dive } from "@/types/dive";
+import { todayWithoutTimezone } from "@/lib/utils";
+import { DiveTime } from "@/types/dive-time";
 import { Place } from "@/types/place";
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { newDive } from "../../_actions/new-dive.action";
 import DiveFormCard from "../shared/dive-form-card";
-import { getTodayWithoutTimezone } from "@/lib/utils";
 
 const isToday = (date: string) => {
-  const today = getTodayWithoutTimezone();
+  const today = todayWithoutTimezone();
   return date === today;
 };
 
-const getNextDiveTime = (date?: string, time?: Dive["dive_time"]) => {
+const getNextDiveTime = (date?: string, time?: DiveTime) => {
   if (!date || !isToday(date)) return "morning";
 
   if (time === "morning") return "noon";
@@ -36,7 +36,7 @@ export default function CreateDiveForm({
   diveNumber: number;
   lastPlace?: Place;
   lastDate?: string;
-  lastDiveTime?: Dive["dive_time"];
+  lastDiveTime?: DiveTime;
 }) {
   const [place, setPlace] = useState<Place | undefined>(lastPlace);
 
