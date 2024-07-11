@@ -10,7 +10,6 @@ import {
   text,
   uuid,
 } from "drizzle-orm/pg-core";
-import { createInsertSchema } from "drizzle-zod";
 
 export const SpecieTable = pgTable("specie", {
   id: integer("id").primaryKey(),
@@ -31,7 +30,7 @@ export const diveTimeEnum = pgEnum("dive_time", [
 
 export const DiveTable = pgTable("dive", {
   id: uuid("id").primaryKey(),
-  date: date("date", { mode: "string" }).notNull(),
+  date: date("date").notNull(),
   place_id: text("place_id").notNull(),
   place_main_text: text("place_main_text").notNull(),
   place_secondary_text: text("place_secondary_text"),
@@ -58,11 +57,3 @@ export const ObservationTable = pgTable(
     };
   },
 );
-
-export const insertSpecieSchema = createInsertSchema(SpecieTable);
-
-export const insertObservationSchema = createInsertSchema(ObservationTable, {
-  amount: (schema) => schema.amount.positive(),
-});
-
-export const insertDiveSchema = createInsertSchema(DiveTable);

@@ -59,6 +59,9 @@ function AutocompleteList({
               </CommandItem>
             );
           })}
+          <CommandItem className="justify-end py-1 text-xs" disabled={true}>
+            powered by Google
+          </CommandItem>
         </CommandGroup>
       </CommandList>
     );
