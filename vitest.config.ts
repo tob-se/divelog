@@ -8,6 +8,8 @@ export default defineConfig({
     include: ["**/*.test.?(c|m)[jt]s?(x)"],
     environment: "jsdom",
     setupFiles: ["test.setup.ts"],
+    fileParallelism: false,
+    isolate: false,
   },
   resolve: {
     alias: {

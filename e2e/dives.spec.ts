@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { deleteDives } from "../test-utils/data-access/delete-dives";
 import { insertDivesDAO } from "../test-utils/data-access/insert-dives-dao";
-import { randomDive } from "./utils";
+import { randomDive } from "../test-utils/random-dive";
 
 const dives = Array.from({ length: 25 }, randomDive)
   .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())

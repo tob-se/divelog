@@ -1,7 +1,7 @@
 import test, { expect } from "@playwright/test";
 import { deleteDives } from "../test-utils/data-access/delete-dives";
 import { insertDiveDAO } from "../test-utils/data-access/insert-dive-dao";
-import { randomDive } from "./utils";
+import { randomDive } from "../test-utils/random-dive";
 
 test.beforeEach(async ({ request }) => {
   await deleteDives();

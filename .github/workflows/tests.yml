@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: Tests
 
 on:
   push:
@@ -14,9 +14,25 @@ env:
   GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
 jobs:
+  vitest-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm run vitest
+
   # Label of the container job
   playwright-job:
-    # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
     container: node:20

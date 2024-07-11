@@ -2,7 +2,7 @@ import DiveList from "@/app/_components/dives/dive-list";
 import DivePagination from "@/app/_components/dives/dive-pagination";
 import { Button } from "@/app/_components/ui/button";
 import Search from "@/app/_components/ui/search";
-import { countTotalDivePages } from "@/infrastructure/data-access/count-dives-by-site-or-place";
+import { countTotalDivePages } from "@/infrastructure/data-access/count-total-dive-pages";
 import { findDivesBySiteOrPlace } from "@/infrastructure/data-access/find-dives-by-site-or-place";
 import { Filter } from "lucide-react";
 

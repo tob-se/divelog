@@ -1,5 +1,4 @@
 import { GoogleSuggestion } from "@/types/google-suggestion";
-import { randomUUID } from "crypto";
 import { http, HttpResponse } from "msw";
 
 export const placesMock: GoogleSuggestion[] = [

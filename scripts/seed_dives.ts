@@ -1,18 +1,20 @@
+import { randomDive } from "@/test-utils/random-dive";
 import { DiveDAO } from "@/infrastructure/dive-dao";
 import { db } from "@/infrastructure/drizzle/db";
-import { DiveTable, ObservationTable } from "@/infrastructure/drizzle/schema";
+import { DiveTable } from "@/infrastructure/drizzle/schema";
 import { ObservationDAO } from "@/infrastructure/observation-dao";
+import { insertDivesDAO } from "@/test-utils/data-access/insert-dives-dao";
+import { insertObservationsDAO } from "@/test-utils/data-access/insert-observations-dao";
 import { faker } from "@faker-js/faker";
 import species from "./species.json";
 import { INatSpecie } from "./types";
-import { randomDive } from "@/e2e/utils";
 
 async function main() {
   await db.delete(DiveTable);
   console.log("deleted dives");
 
   const dives: DiveDAO[] = Array.from({ length: 500 }, randomDive);
-  await db.insert(DiveTable).values(dives);
+  await insertDivesDAO(dives);
   console.log("inserted dives");
 
   const newSpecies = (species as INatSpecie[])
@@ -35,7 +37,7 @@ async function main() {
     })
     .flat();
 
-  await db.insert(ObservationTable).values(observations);
+  await insertObservationsDAO(observations);
   console.log("inserted observations");
 
   process.exit();
