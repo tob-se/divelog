@@ -1,6 +1,6 @@
 import { Place } from "@/types/place";
 import { useRef, useState, type KeyboardEvent } from "react";
-import { CommandInput } from "../../ui/command";
+import { Command as CommandPrimitive } from "cmdk";
 import CommandWithLabel from "../../ui/command-with-label";
 import AutocompleteList from "./autocomplete-list";
 
@@ -75,26 +75,28 @@ export const AutocompleteInput = ({
       onKeyDown={handleKeyDown}
       label="Dive Center/Location"
     >
-      <CommandInput
-        ref={inputRef}
-        value={value}
-        onValueChange={isLoading ? undefined : setValue}
-        onBlur={handleBlur}
-        onFocus={() => setOpen(true)}
-        placeholder={placeholder}
-        data-testid="auto-complete-input"
-        required
-      />
-      <div className="relative">
-        {isOpen && (
-          <AutocompleteList
-            options={options}
-            handleSelectOption={handleSelectOption}
-            isLoading={isLoading}
-            selected={selected}
-          />
-        )}
+      <div className="flex w-full items-center justify-between rounded-lg border bg-background ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
+        <CommandPrimitive.Input
+          ref={inputRef}
+          value={value}
+          onValueChange={isLoading ? undefined : setValue}
+          onBlur={handleBlur}
+          onFocus={() => setOpen(true)}
+          placeholder={placeholder}
+          data-testid="auto-complete-input"
+          className="h-10 w-full rounded-lg px-3 py-2 text-sm outline-none placeholder:text-muted-foreground"
+          required
+        />
       </div>
+      {isOpen ? (
+        <AutocompleteList
+          options={options}
+          handleSelectOption={handleSelectOption}
+          isLoading={isLoading}
+        />
+      ) : (
+        <CommandPrimitive.List />
+      )}
     </CommandWithLabel>
   );
 };
