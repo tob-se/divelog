@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { DiveTime } from "@/types/dive-time";
 import { Moon, Sun, Sunrise, Sunset } from "lucide-react";
 
@@ -16,8 +16,6 @@ const TimeIcon = ({ time }: { time: DiveTime }) => {
     return <Moon data-testid="moon-icon" className="h-[1em] w-[1em]" />;
   }
 };
-
-const formatDate = (date: string) => date.split("-").reverse().join("/");
 
 function DateAndTime({
   date,

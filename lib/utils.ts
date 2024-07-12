@@ -5,6 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export const formatDate = (date: string) => date.split("-").reverse().join("/");
+
 export const todayWithoutTimezone = () => {
   let today = new Date();
   const offset = today.getTimezoneOffset();

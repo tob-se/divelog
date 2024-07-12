@@ -6,12 +6,14 @@ type Props = {
   date?: string;
   time?: DiveDAO["dive_time"];
   place_main_text?: string;
+  highlight?: boolean;
 };
 
 export const randomDive = ({
   date,
   time,
   place_main_text,
+  highlight,
 }: Props = {}): DiveDAO => {
   return {
     id: randomUUID(),
@@ -21,7 +23,7 @@ export const randomDive = ({
       time ||
       faker.helpers.arrayElement(["morning", "noon", "afternoon", "night"]),
     dive_site: faker.lorem.words({ min: 1, max: 3 }),
-    highlight: faker.datatype.boolean(),
+    highlight: highlight ?? faker.datatype.boolean(),
     place_id: "ChIJwXCwpM5z0i0RvfNzf6n-8KY",
     place_main_text: place_main_text || "Scuba Junkie Penida",
     place_secondary_text: "Ped, Klungkung Regency, Bali, Indonesia",

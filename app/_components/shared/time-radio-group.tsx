@@ -9,6 +9,7 @@ function TimeRadioGroup({ time }: { time?: DiveTime }) {
         icon={<Sunrise className="h-4 w-4" />}
         value="morning"
         aria-label="Morning"
+        data-testid="morning-radio-item"
       />
       <RadioGroupItem
         icon={<Sun className="h-4 w-4" />}
@@ -20,6 +21,7 @@ function TimeRadioGroup({ time }: { time?: DiveTime }) {
         icon={<Sunset className="h-4 w-4" />}
         value="afternoon"
         aria-label="Afternoon"
+        data-testid="afternoon-radio-item"
       />
       <RadioGroupItem
         icon={<Moon className="h-4 w-4" />}

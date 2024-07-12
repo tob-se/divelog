@@ -23,7 +23,7 @@ test.beforeEach(async ({ request }) => {
   await request.post("/api/revalidate");
 });
 
-test("dives", async ({ page }) => {
+test("dive pagination and filtering", async ({ page }) => {
   await page.goto("/dives");
 
   await expect(page.getByTestId("dive-item")).toHaveCount(15);
