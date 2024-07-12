@@ -13,7 +13,7 @@ type Props = {
 function ListLayout({ children }: { children: ReactNode }) {
   return (
     <div className="relative animate-in fade-in-0 zoom-in-95">
-      <CommandList className="absolute z-50 h-auto w-full rounded-md border bg-background shadow-md">
+      <CommandList>
         <CommandGroup>
           {children}
           <CommandItem className="justify-end py-1 text-xs" disabled={true}>
@@ -43,22 +43,21 @@ function AutocompleteList({ isLoading, options, handleSelectOption }: Props) {
           const { id, main_text, secondary_text } = option;
 
           return (
-            <CommandPrimitive.Item
+            <CommandItem
               key={id}
-              value={main_text + secondary_text}
+              value={id}
               onMouseDown={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
               }}
               onSelect={() => handleSelectOption(option)}
-              className="flex h-max cursor-pointer select-text flex-col items-start gap-0.5 rounded-md p-2 px-3 hover:bg-accent hover:text-accent-foreground aria-selected:bg-accent aria-selected:text-accent-foreground"
               data-testid="auto-complete-item"
             >
               <div className="flex flex-col gap-0.5 text-sm">
                 <span className="font-medium leading-none">{main_text}</span>
                 <span className="text-muted-foreground">{secondary_text}</span>
               </div>
-            </CommandPrimitive.Item>
+            </CommandItem>
           );
         })}
       </ListLayout>

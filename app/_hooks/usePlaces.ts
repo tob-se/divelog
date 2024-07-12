@@ -1,5 +1,5 @@
 import { GoogleSuggestion } from "@/types/google-suggestion";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { useToast } from "../_components/ui/use-toast";
 
 type JsonResponse = {
@@ -34,11 +34,10 @@ const fetcher = (url: string) =>
 export const usePlaces = (input: string) => {
   const { toast } = useToast();
 
-  const response = useSWR(
+  const response = useSWRImmutable(
     input ? `/api/autocomplete?input=${input}` : null,
     fetcher,
     {
-      revalidateOnFocus: false,
       onError: (error) =>
         toast({
           title: "Failed to fetch places",

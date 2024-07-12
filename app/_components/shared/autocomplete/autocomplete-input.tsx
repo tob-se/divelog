@@ -1,8 +1,8 @@
 import { Place } from "@/types/place";
 import { useRef, useState, type KeyboardEvent } from "react";
 import { Command as CommandPrimitive } from "cmdk";
-import CommandWithLabel from "../../ui/command-with-label";
 import AutocompleteList from "./autocomplete-list";
+import { Command, CommandInput } from "../../ui/command";
 
 type Props = {
   options: Place[];
@@ -70,24 +70,18 @@ export const AutocompleteInput = ({
   };
 
   return (
-    <CommandWithLabel
-      shouldFilter={false}
-      onKeyDown={handleKeyDown}
-      label="Dive Center/Location"
-    >
-      <div className="flex w-full items-center justify-between rounded-lg border bg-background ring-offset-background focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2">
-        <CommandPrimitive.Input
-          ref={inputRef}
-          value={value}
-          onValueChange={isLoading ? undefined : setValue}
-          onBlur={handleBlur}
-          onFocus={() => setOpen(true)}
-          placeholder={placeholder}
-          data-testid="auto-complete-input"
-          className="h-10 w-full rounded-lg px-3 py-2 text-sm outline-none placeholder:text-muted-foreground"
-          required
-        />
-      </div>
+    <Command shouldFilter={false} label="Dive Center/Location">
+      <CommandInput
+        onKeyDown={handleKeyDown}
+        ref={inputRef}
+        value={value}
+        onValueChange={isLoading ? undefined : setValue}
+        onBlur={handleBlur}
+        onFocus={() => setOpen(true)}
+        placeholder={placeholder}
+        data-testid="auto-complete-input"
+        required
+      />
       {isOpen ? (
         <AutocompleteList
           options={options}
@@ -97,6 +91,6 @@ export const AutocompleteInput = ({
       ) : (
         <CommandPrimitive.List />
       )}
-    </CommandWithLabel>
+    </Command>
   );
 };
