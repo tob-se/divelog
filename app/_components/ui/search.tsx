@@ -28,11 +28,10 @@ export default function Search({
       params.delete("query");
     }
     replace(`${pathname}?${params.toString()}`);
-  }, 300);
+  }, 500);
 
   return (
     <Input
-      key={query ? 1 : 0}
       autoFocus={autoFocus}
       defaultValue={query}
       className="min-h-10"

@@ -7,7 +7,7 @@ import Species from "../../../_components/edit-observations/species";
 import SubmitObservationForm from "../../../_components/edit-observations/submit-observation-form";
 import Search from "@/app/_components/ui/search";
 
-export default async function Page({
+export default function Page({
   searchParams,
   params,
 }: {
@@ -27,6 +27,7 @@ export default async function Page({
             <Search
               query={query}
               placeholder="Add new observations"
+              key={query ? 1 : 0}
               autoFocus
             />
             {query ? (

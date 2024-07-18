@@ -7,6 +7,7 @@ import SpecieListItem from "../shared/specie-list-item";
 import DeleteObservationButton from "./delete-observation-button";
 import EditObservationButton from "./edit-observation-button";
 import { useObservationContext } from "./observation-context";
+import EmptyList from "../shared/empty-list";
 
 const List = ({ observations }: { observations: Observation[] }) => {
   return (
@@ -38,6 +39,13 @@ export default function ObservationList({
       setObservations(initialObservations);
     }
   }, [initialObservations, observations, setObservations]);
+
+  if (
+    (!observations && initialObservations.length === 0) ||
+    observations?.length === 0
+  ) {
+    return <EmptyList testId="no-observations" message="no observations yet" />;
+  }
 
   return <List observations={observations || initialObservations} />;
 }

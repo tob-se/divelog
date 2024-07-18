@@ -3,6 +3,7 @@ import SpecieSummary from "@/app/_components/edit-observations/specie-summary";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
 } from "@/app/_components/ui/dialog";
@@ -29,6 +30,12 @@ function ObservationAmountDialog({
         <VisuallyHidden.Root>
           <DialogTitle>Amount</DialogTitle>
         </VisuallyHidden.Root>
+        <VisuallyHidden.Root>
+          <DialogDescription>
+            Specify the amount you observed.
+          </DialogDescription>
+        </VisuallyHidden.Root>
+
         <div className="relative aspect-[4/3]">
           {specie.medium_url ? (
             <Image

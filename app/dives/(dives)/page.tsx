@@ -1,5 +1,6 @@
 import DiveList from "@/app/_components/dives/dive-list";
 import DivePagination from "@/app/_components/dives/dive-pagination";
+import EmptyList from "@/app/_components/shared/empty-list";
 import { Button } from "@/app/_components/ui/button";
 import Search from "@/app/_components/ui/search";
 import { countTotalDivePages } from "@/infrastructure/data-access/count-total-dive-pages";
@@ -35,12 +36,10 @@ async function Dives({
       {dives.length > 0 ? (
         <DiveList dives={dives} key={page} />
       ) : (
-        <div
-          data-testid="no-dives"
-          className="rounded-sm bg-slate-50 p-2 outline-none"
-        >
-          <span className="text-sm text-muted-foreground">no dives found</span>
-        </div>
+        <EmptyList
+          testId="no-dives"
+          message={query ? "no dives found" : "no dives yet"}
+        />
       )}
 
       <DivePagination totalPages={totalPages} />
