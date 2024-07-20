@@ -17,7 +17,7 @@ test("delete dive", async ({ page }) => {
 
   // assert on dives page
   await page.waitForURL("**/dives");
-  await expect(page.getByTestId("no-dives")).toBeVisible();
+  await expect(page.getByTestId("empty-list")).toBeVisible();
 
   // assert observations on home page
   await page.goto("/");

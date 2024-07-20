@@ -50,5 +50,5 @@ test("dive pagination and filtering", async ({ page }) => {
 
   // search for non existent
   await page.getByTestId("search-input").fill("Alor");
-  await expect(page.getByTestId("no-dives")).toBeVisible();
+  await expect(page.getByTestId("empty-list")).toBeVisible();
 });

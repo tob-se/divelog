@@ -16,6 +16,8 @@ env:
 jobs:
   vitest-job:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.45.1-jammy
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -28,9 +30,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
-
       - name: Test
         run: npm run vitest
 
@@ -38,7 +37,8 @@ jobs:
   playwright-job:
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
-    container: node:20
+    container:
+      image: mcr.microsoft.com/playwright:v1.45.1-jammy
 
     # Service containers to run with `container-job`
     services:
@@ -65,9 +65,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps chromium
 
       - name: Push DB Schema
         run: npm run push
