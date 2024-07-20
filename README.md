@@ -4,6 +4,7 @@
 - [ ] Add Unhappy Path Tests
 - [ ] Add Authentication
 - [ ] Add Directory Access restrictions
+- [ ] Use pnpm
 - [ ] Fix Layout Shift
 - [ ] Check naming of functions and variables
 - [ ] Implement filtering in logbook

@@ -6,7 +6,7 @@ async function Species({ query }: { query: string }) {
   const species = await findSpeciesByName(query);
 
   if (species.length === 0) {
-    return <EmptyList testId="no-species" message="no species found" />;
+    return <EmptyList message="no species found" />;
   }
 
   return <SpecieList species={species} />;

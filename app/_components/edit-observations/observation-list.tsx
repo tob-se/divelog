@@ -40,12 +40,11 @@ export default function ObservationList({
     }
   }, [initialObservations, observations, setObservations]);
 
-  if (
-    (!observations && initialObservations.length === 0) ||
-    observations?.length === 0
-  ) {
-    return <EmptyList testId="no-observations" message="no observations yet" />;
+  const latestObservations = observations ?? initialObservations;
+
+  if (latestObservations.length === 0) {
+    return <EmptyList message="no observations yet" />;
   }
 
-  return <List observations={observations || initialObservations} />;
+  return <List observations={latestObservations} />;
 }

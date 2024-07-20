@@ -36,10 +36,7 @@ async function Dives({
       {dives.length > 0 ? (
         <DiveList dives={dives} key={page} />
       ) : (
-        <EmptyList
-          testId="no-dives"
-          message={query ? "no dives found" : "no dives yet"}
-        />
+        <EmptyList message={query ? "no dives found" : "no dives yet"} />
       )}
 
       <DivePagination totalPages={totalPages} />
