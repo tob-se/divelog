@@ -4,7 +4,7 @@ import { deleteDives } from "../test-utils/data-access/delete-dives";
 import { randomDive } from "@/test-utils/random-dive";
 import { insertDiveDAO } from "@/test-utils/data-access/insert-dive-dao";
 import { formatDate } from "@/lib/utils";
-import { placesMock } from "@/mocks/handlers";
+import { placesMock } from "@/test-utils/places-mock";
 
 const dive = randomDive({ highlight: false });
 

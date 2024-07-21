@@ -11,10 +11,16 @@ export default defineWorkspace([
     },
     test: {
       include: ["infrastructure/**/*.test.?(c|m)[jt]s?(x)"],
+      name: "infrastructure",
+      environment: "node",
+      setupFiles: ["test-utils/infrastructure.setup.ts"],
+    },
+  },
+  {
+    test: {
+      include: ["lib/**/*.test.?(c|m)[jt]s?(x)"],
       name: "unit",
       environment: "node",
-      setupFiles: ["test.setup.ts"],
-      isolate: false,
     },
   },
   {

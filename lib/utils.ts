@@ -1,3 +1,4 @@
+import { DiveTime } from "@/types/dive-time";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -13,6 +14,22 @@ export const todayWithoutTimezone = () => {
   today = new Date(today.getTime() - offset * 60 * 1000);
 
   return today.toISOString().split("T")[0];
+};
+
+const isToday = (date: string) => {
+  const today = todayWithoutTimezone();
+  return date === today;
+};
+
+// domain logic, should be in a service
+export const getNextDiveTime = (date?: string, time?: DiveTime) => {
+  if (!date || !isToday(date)) return "morning";
+
+  if (time === "morning") return "noon";
+  if (time === "noon") return "afternoon";
+  if (time === "afternoon") return "night";
+
+  return "morning";
 };
 
 export const generatePagination = (currentPage: number, totalPages: number) => {

@@ -1,5 +1,4 @@
 import { GoogleSuggestion } from "@/types/google-suggestion";
-import { http, HttpResponse } from "msw";
 
 export const placesMock: GoogleSuggestion[] = [
   {
@@ -38,10 +37,4 @@ export const placesMock: GoogleSuggestion[] = [
       },
     },
   },
-];
-
-export const handlers = [
-  http.get("/api/autocomplete", () => {
-    return HttpResponse.json({ data: placesMock });
-  }),
 ];

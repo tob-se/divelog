@@ -1,4 +1,4 @@
-import { placesMock } from "@/mocks/handlers";
+import { placesMock } from "@/test-utils/places-mock";
 import test, { expect } from "@playwright/test";
 import { deleteDives } from "../test-utils/data-access/delete-dives";
 import { formatDate, todayWithoutTimezone } from "@/lib/utils";

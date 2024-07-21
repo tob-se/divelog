@@ -21,6 +21,7 @@
     "test-ui": "npx playwright test --ui",
     "vitest": "vitest",
     "vitest-unit": "vitest --project unit",
+    "vitest-infrastructure": "vitest --project infrastructure",
     "vitest-browser": "vitest --project browser"
   },
   "dependencies": {
@@ -69,7 +70,6 @@
     "drizzle-kit": "^0.23.0",
     "eslint": "^8",
     "eslint-config-next": "^14.2.5",
-    "msw": "^2.3.1",
     "postcss": "^8",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.4",
