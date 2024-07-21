@@ -6,7 +6,7 @@ import { ObservationDAO } from "@/infrastructure/observation-dao";
 import { insertDivesDAO } from "@/test-utils/data-access/insert-dives-dao";
 import { insertObservationsDAO } from "@/test-utils/data-access/insert-observations-dao";
 import { faker } from "@faker-js/faker";
-import species from "./species.json";
+import species from "./test-species.json";
 import { INatSpecie } from "./types";
 
 async function main() {

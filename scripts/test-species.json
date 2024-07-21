@@ -1,0 +1,79 @@
+[
+  {
+    "id": 47655,
+    "name": "Doto amyra",
+    "common_name": "Hammerhead Doto",
+    "observations": 1201,
+    "image": {
+      "square_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/146448262/square.jpg",
+      "medium_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/146448262/medium.jpg"
+    },
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Doto_amyra"
+  },
+  {
+    "id": 142790,
+    "name": "Thecacera pacifica",
+    "common_name": "Pikachu Nudibranch",
+    "observations": 109,
+    "image": {
+      "square_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/163550706/square.jpg",
+      "medium_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/163550706/medium.jpg"
+    },
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Thecacera_pacifica"
+  },
+  {
+    "id": 52188,
+    "name": "Rhincodon typus",
+    "common_name": "Whale Shark",
+    "observations": 1388,
+    "image": {
+      "square_url": "https://static.inaturalist.org/photos/229381770/square.jpg",
+      "medium_url": "https://static.inaturalist.org/photos/229381770/medium.jpg"
+    },
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Whale_shark"
+  },
+  {
+    "id": 623966,
+    "name": "Mobula birostris",
+    "common_name": "Oceanic Manta Ray",
+    "observations": 603,
+    "image": {
+      "square_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/33852153/square.jpg",
+      "medium_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/33852153/medium.jpg"
+    },
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Giant_oceanic_manta_ray"
+  },
+  {
+    "id": 39659,
+    "name": "Chelonia mydas",
+    "common_name": "Green Sea Turtle",
+    "observations": 22733,
+    "image": {
+      "square_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5158990/square.jpeg",
+      "medium_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/5158990/medium.jpeg"
+    },
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Green_sea_turtle"
+  },
+  {
+    "id": 244849,
+    "name": "Hexabranchus sanguineus",
+    "common_name": "Spanish Dancer",
+    "observations": 388,
+    "image": {
+      "square_url": "https://static.inaturalist.org/photos/229212281/square.jpg",
+      "medium_url": "https://static.inaturalist.org/photos/229212281/medium.jpg"
+    },
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Spanish_dancer"
+  },
+  {
+    "id": 52299,
+    "name": "Galeocerdo cuvier",
+    "common_name": "Tiger Shark",
+    "observations": 368,
+    "image": {
+      "square_url": "https://static.inaturalist.org/photos/282712482/square.jpg",
+      "medium_url": "https://static.inaturalist.org/photos/282712482/medium.jpg"
+    },
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Tiger_shark"
+  }
+]

@@ -1,11 +1,11 @@
-import { ObservationTable, SpecieTable } from "@/infrastructure/drizzle/schema";
-import species from "./species.json";
 import { db } from "@/infrastructure/drizzle/db";
+import { SpecieTable } from "@/infrastructure/drizzle/schema";
 import { SpecieDAO } from "@/infrastructure/specie-dao";
+import species from "./test-species.json";
 import { INatSpecie } from "./types";
 
-async function main() {
-  const newSpecies: SpecieDAO[] = (species as INatSpecie[]).map((specie) => ({
+function toSpecieDao(specie: INatSpecie): SpecieDAO {
+  return {
     id: specie.id,
     name: specie.name,
     common_name: specie.common_name || null,
@@ -13,7 +13,11 @@ async function main() {
     square_url: specie.image?.square_url || null,
     medium_url: specie.image?.medium_url || null,
     wikipedia_url: specie.wikipedia_url,
-  }));
+  };
+}
+
+async function main() {
+  const newSpecies: SpecieDAO[] = (species as INatSpecie[]).map(toSpecieDao);
 
   await db.delete(SpecieTable);
   console.log("deleted specie table");
