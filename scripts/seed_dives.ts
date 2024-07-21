@@ -17,15 +17,10 @@ async function main() {
   await insertDivesDAO(dives);
   console.log("inserted dives");
 
-  const newSpecies = (species as INatSpecie[])
-    .filter((specie) => specie.observations > 100)
-    .filter((specie) => !!specie.image)
-    .filter((specie) => !!specie.common_name);
-
   const observations = dives
     .map((dive) => {
       return faker.helpers
-        .arrayElements(newSpecies, { min: 1, max: 5 })
+        .arrayElements(species as INatSpecie[], { min: 1, max: 5 })
         .map((specie) => {
           const observation: ObservationDAO = {
             amount: faker.number.int({ min: 1, max: 3 }),

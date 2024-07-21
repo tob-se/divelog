@@ -1,14 +1,14 @@
 [
   {
-    "id": 47655,
-    "name": "Doto amyra",
-    "common_name": "Hammerhead Doto",
-    "observations": 1201,
+    "id": 56764,
+    "name": "Sphyrna lewini",
+    "common_name": "Scalloped Hammerhead",
+    "observations": 1055,
     "image": {
-      "square_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/146448262/square.jpg",
-      "medium_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/146448262/medium.jpg"
+      "square_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/224059254/square.jpg",
+      "medium_url": "https://inaturalist-open-data.s3.amazonaws.com/photos/224059254/medium.jpg"
     },
-    "wikipedia_url": "http://en.wikipedia.org/wiki/Doto_amyra"
+    "wikipedia_url": "http://en.wikipedia.org/wiki/Scalloped_hammerhead"
   },
   {
     "id": 142790,

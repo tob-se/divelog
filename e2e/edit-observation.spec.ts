@@ -9,7 +9,7 @@ const dive = randomDive();
 const observation: ObservationDAO = {
   amount: 2,
   dive_id: dive.id,
-  specie_id: 623965, // mobula ray
+  specie_id: 623966, // oceanic manta
 };
 
 test.beforeEach(async ({ request }) => {

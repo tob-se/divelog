@@ -16,7 +16,7 @@ test("new observations", async ({ page }) => {
 
   // add Hammerhead observation
   await page.getByTestId("search-input").fill("Hammerhead");
-  await page.getByTestId("specie-list-item").nth(1).click();
+  await page.getByTestId("specie-list-item").click();
   await page.getByTestId("amount-input").fill("2");
   await page.getByTestId("submit-observation-button").click();
 
@@ -29,7 +29,7 @@ test("new observations", async ({ page }) => {
 
   // add Pikachu observation
   await page.getByTestId("search-input").fill("Pikachu");
-  await page.getByTestId("specie-list-item").first().click();
+  await page.getByTestId("specie-list-item").click();
   await page.getByTestId("submit-observation-button").click();
 
   await expect(page.getByTestId("observation-list-item").last()).toContainText(
