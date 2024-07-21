@@ -10,7 +10,6 @@
     "generate": "drizzle-kit generate",
     "generate-custom": "drizzle-kit generate --custom",
     "push": "drizzle-kit push",
-    "push-prod": "POSTGRES_URL=postgres://default:X6SABHfy2KRa@ep-green-feather-a2ov0s14-pooler.eu-central-1.aws.neon.tech:5432/verceldb?sslmode=require drizzle-kit push",
     "migrate": "drizzle-kit migrate",
     "seed-species": "npx tsx scripts/seed_species.ts",
     "seed-dives": "npx tsx scripts/seed_dives.ts",
