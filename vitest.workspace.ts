@@ -17,8 +17,16 @@ export default defineWorkspace([
     },
   },
   {
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "."),
+      },
+    },
     test: {
-      include: ["lib/**/*.test.?(c|m)[jt]s?(x)"],
+      include: [
+        "lib/**/*.test.?(c|m)[jt]s?(x)",
+        "app/api/**/*.test.?(c|m)[jt]s?(x)",
+      ],
       name: "unit",
       environment: "node",
     },
@@ -32,6 +40,7 @@ export default defineWorkspace([
     },
     test: {
       include: ["app/**/*.test.?(c|m)[jt]s?(x)"],
+      exclude: ["app/api"],
       name: "browser",
       browser: {
         enabled: true,

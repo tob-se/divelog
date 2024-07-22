@@ -13,6 +13,7 @@ const initialState: GenericFormState = {
 function DeleteDiveForm({ id }: { id: string }) {
   const deleteDiveWithId = removeDive.bind(null, id);
   const [state, dispatch] = useFormState(deleteDiveWithId, initialState);
+
   useMessageToast("Failed to delete dive", state);
 
   return (
