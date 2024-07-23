@@ -35,6 +35,7 @@ export default function Search({
       onChange={(e) => {
         handleSearch(e.target.value);
       }}
+      type="search"
       placeholder={placeholder}
       data-testid="search-input"
     />
