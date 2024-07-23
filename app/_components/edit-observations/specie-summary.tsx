@@ -18,7 +18,7 @@ function SpecieSummary({ wikipedia_url }: { wikipedia_url: string }) {
   }
 
   return (
-    <TextTuple className="overflow-auto p-3 pb-0 text-sm" title="Description">
+    <TextTuple className="overflow-auto p-3 pb-0" title="Description">
       {summary}
     </TextTuple>
   );

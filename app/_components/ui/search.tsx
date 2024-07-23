@@ -7,11 +7,9 @@ import { useDebouncedCallback } from "use-debounce";
 export default function Search({
   query,
   placeholder,
-  autoFocus,
 }: {
   query: string;
   placeholder: string;
-  autoFocus?: boolean;
 }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -32,7 +30,6 @@ export default function Search({
 
   return (
     <Input
-      autoFocus={autoFocus}
       defaultValue={query}
       className="min-h-10 text-base"
       onChange={(e) => {

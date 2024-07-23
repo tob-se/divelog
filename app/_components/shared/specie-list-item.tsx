@@ -14,7 +14,7 @@ const SpecieListItem = forwardRef<HTMLLIElement, Props>(
       <li
         ref={ref}
         className={cn(
-          "relative flex select-none items-center gap-2 rounded-sm p-1 text-sm outline-none",
+          "relative flex select-none items-center gap-2 rounded-sm p-1 outline-none",
           className,
         )}
         {...props}
@@ -30,7 +30,7 @@ const SpecieListItem = forwardRef<HTMLLIElement, Props>(
         ) : (
           <Fish height={45} width={45} color="dimgray" />
         )}
-        <div className="flex flex-col text-sm">
+        <div className="flex flex-col">
           <span className="leading-none">{specie.common_name}</span>
           <span className="text-muted-foreground">{specie.name}</span>
         </div>

@@ -1,6 +1,7 @@
 import { db } from "@/infrastructure/drizzle/db";
 import { SpecieTable } from "@/infrastructure/drizzle/schema";
 import { SpecieDAO } from "@/infrastructure/specie-dao";
+// import species from "./species.json";
 import species from "./test-species.json";
 import { INatSpecie } from "./types";
 
