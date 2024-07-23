@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     title: "Divelog",
     statusBarStyle: "black-translucent",
+    capable: true,
   },
 };
 

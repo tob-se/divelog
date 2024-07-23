@@ -32,7 +32,7 @@ const SpecieListItem = forwardRef<HTMLLIElement, Props>(
         )}
         <div className="flex flex-col gap-1">
           <span className="leading-none">{specie.common_name}</span>
-          <span className="leading-none text-muted-foreground">
+          <span className="text-sm leading-none text-muted-foreground">
             {specie.name}
           </span>
         </div>

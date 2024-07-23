@@ -3,6 +3,7 @@
 - [ ] Add Form Tests
 - [ ] Add Unhappy Path Tests
 - [ ] Add Authentication
+- [ ] Better Skeletons
 - [ ] Add Directory Access restrictions
 - [ ] Use pnpm
 - [ ] Fix Layout Shift
