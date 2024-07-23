@@ -26,7 +26,7 @@ function ObservationAmountDialog({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-sm gap-0 space-y-0 border-0 p-0">
+      <DialogContent className="flex max-h-[calc(100%-2rem)] w-[calc(100%-2rem)] max-w-sm flex-col gap-0 space-y-0 border-0 p-0">
         <VisuallyHidden.Root>
           <DialogTitle>Amount</DialogTitle>
         </VisuallyHidden.Root>

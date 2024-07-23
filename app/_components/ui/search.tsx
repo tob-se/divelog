@@ -34,7 +34,7 @@ export default function Search({
     <Input
       autoFocus={autoFocus}
       defaultValue={query}
-      className="min-h-10"
+      className="min-h-10 text-base"
       onChange={(e) => {
         handleSearch(e.target.value);
       }}

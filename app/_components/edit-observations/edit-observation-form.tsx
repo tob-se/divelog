@@ -40,7 +40,6 @@ function EditObservationForm({
         <Input
           id="amount"
           name="amount"
-          autoFocus
           className="w-24"
           type="number"
           min={1}
