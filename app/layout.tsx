@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "Highly opinionated diving logbook",
   appleWebApp: {
     title: "Divelog",
-    statusBarStyle: "default",
+    statusBarStyle: "black-translucent",
     capable: true,
   },
 };
