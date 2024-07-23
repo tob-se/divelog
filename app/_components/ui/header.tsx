@@ -12,15 +12,15 @@ function Header<T extends string>({
 }) {
   return (
     <div className="flex justify-between">
-      <div className="flex gap-3">
+      <div className="flex items-center gap-3">
         <Link href={href}>
           <Button
             data-testid="back-button"
             variant="outline"
             size="icon"
-            className="h-7 w-7"
+            className="h-8 w-8"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-5 w-5" />
             <span className="sr-only">Back</span>
           </Button>
         </Link>
@@ -32,10 +32,10 @@ function Header<T extends string>({
         <Button
           variant="outline"
           size="icon"
-          className="h-7 w-7"
+          className="h-8 w-8"
           data-testid="close-button"
         >
-          <X className="h-4 w-4" />
+          <X className="h-5 w-5" />
           <span className="sr-only">Back</span>
         </Button>
       </Link>
