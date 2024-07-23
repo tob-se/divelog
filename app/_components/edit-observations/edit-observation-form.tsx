@@ -42,6 +42,7 @@ function EditObservationForm({
           name="amount"
           className="w-24"
           type="number"
+          inputMode="numeric"
           min={1}
           defaultValue={observation.amount}
           data-testid="amount-input"

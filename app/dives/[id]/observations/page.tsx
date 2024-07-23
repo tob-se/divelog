@@ -24,7 +24,11 @@ export default function Page({
       <Card className="flex grow flex-col overflow-hidden">
         <CardContent className="flex grow flex-col overflow-hidden">
           <div className="flex h-full flex-col gap-3">
-            <Search query={query} placeholder="Add new observations" />
+            <Search
+              key={query ? 1 : 0}
+              query={query}
+              placeholder="Add new observations"
+            />
             {query ? (
               <Suspense key={query} fallback={<ListItemFallback />}>
                 <Species query={query} />
