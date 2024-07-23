@@ -17,7 +17,7 @@ function NavigationButton<T extends string>({
     <Link href={href} data-testid={testId}>
       <Button
         variant="outline"
-        className="flex h-20 w-24 flex-col items-center gap-2"
+        className="flex h-16 w-[4.5rem] flex-col items-center gap-2 text-xs"
       >
         {children}
         <span>{name}</span>

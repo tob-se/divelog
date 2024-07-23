@@ -8,10 +8,10 @@ export function LastDiveInformationFallback() {
   return (
     <div className="grid grid-cols-2 gap-3">
       <GenericTuple title="Last Dive Date">
-        <Skeleton className="h-5 w-[100px]" />
+        <Skeleton className="h-6 w-[100px]" />
       </GenericTuple>
       <GenericTuple title="Number of dives">
-        <Skeleton className="h-5 w-[70px]" />
+        <Skeleton className="h-6 w-[70px]" />
       </GenericTuple>
     </div>
   );
