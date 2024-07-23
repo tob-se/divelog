@@ -36,13 +36,11 @@ function EditObservationForm({
   return (
     <form action={action} className="p-3">
       <div className="flex flex-col gap-2">
-        <Label className="text-base" htmlFor="amount">
-          Amount
-        </Label>
+        <Label htmlFor="amount">Amount</Label>
         <Input
           id="amount"
           name="amount"
-          className="w-24 text-base"
+          className="w-24"
           type="number"
           min={1}
           defaultValue={observation.amount}

@@ -30,7 +30,7 @@ async function Dive({ params }: { params: { id: string } }) {
         </div>
         <DateAndTime date={date} time={dive_time} />
       </CardHeader>
-      <CardContent className="overflow-auto text-sm">
+      <CardContent className="overflow-auto">
         <div className="grid grid-cols-2 gap-3">
           <TextTuple testId="location" title="Location">
             <address className="grid gap-0.5 not-italic">

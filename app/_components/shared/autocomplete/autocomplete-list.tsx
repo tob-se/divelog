@@ -16,7 +16,7 @@ function ListLayout({ children }: { children: ReactNode }) {
       <CommandList>
         <CommandGroup>
           {children}
-          <CommandItem className="justify-end py-1 text-xs" disabled={true}>
+          <CommandItem className="justify-end py-1 text-sm" disabled={true}>
             powered by Google
           </CommandItem>
         </CommandGroup>
@@ -53,7 +53,7 @@ function AutocompleteList({ isLoading, options, handleSelectOption }: Props) {
               onSelect={() => handleSelectOption(option)}
               data-testid="auto-complete-item"
             >
-              <div className="flex flex-col gap-0.5 text-sm">
+              <div className="flex flex-col gap-0.5">
                 <span className="font-medium leading-none">{main_text}</span>
                 <span className="text-muted-foreground">{secondary_text}</span>
               </div>

@@ -20,7 +20,7 @@ function NavigationButton<T extends string>({
         className="flex h-20 w-24 flex-col items-center gap-2"
       >
         {children}
-        <span className="text-xs">{name}</span>
+        <span>{name}</span>
       </Button>
     </Link>
   );

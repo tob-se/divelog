@@ -68,7 +68,7 @@ export default function DiveFormCard({
             <FormErrors errors={formState.errors?.date} />
           </div>
           <div className="space-y-2">
-            <span className="text-sm font-medium leading-none">Time</span>
+            <span className="font-medium leading-none">Time</span>
             <TimeRadioGroup time={dive?.dive_time || nextDiveTime} />
             <FormErrors errors={formState.errors?.dive_time} />
           </div>

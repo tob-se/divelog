@@ -8,7 +8,7 @@ function SpecieSummary({ wikipedia_url }: { wikipedia_url: string }) {
 
   if (isLoading) {
     return (
-      <GenericTuple className="p-3 pb-0 text-sm" title="Description">
+      <GenericTuple className="p-3 pb-0" title="Description">
         <Skeleton className="h-4 w-[200px]" />
         <Skeleton className="h-4 w-[150px]" />
         <Skeleton className="h-4 w-[250px]" />

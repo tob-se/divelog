@@ -31,7 +31,7 @@ export default function Search({
   return (
     <Input
       defaultValue={query}
-      className="min-h-10 text-base"
+      className="min-h-10"
       onChange={(e) => {
         handleSearch(e.target.value);
       }}

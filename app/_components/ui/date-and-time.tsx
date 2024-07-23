@@ -29,7 +29,7 @@ function DateAndTime({
   return (
     <div
       className={cn(
-        "flex items-center gap-2 text-sm text-muted-foreground",
+        "gap-2m flex items-center text-muted-foreground",
         className,
       )}
       data-testid="date-and-time"

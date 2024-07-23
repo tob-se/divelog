@@ -3,7 +3,7 @@ const FormMessage = ({ message }: { message?: string }) => {
     return null;
   }
 
-  return <p className="text-sm font-medium text-destructive">{message}</p>;
+  return <p className="font-medium text-destructive">{message}</p>;
 };
 
 export default FormMessage;

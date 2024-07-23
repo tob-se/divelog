@@ -14,7 +14,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "space-y-2 outline-none [&_[cmdk-label]]:!relative [&_[cmdk-label]]:!h-fit [&_[cmdk-label]]:!w-fit [&_[cmdk-label]]:text-sm [&_[cmdk-label]]:font-medium [&_[cmdk-label]]:leading-none [&_[cmdk-label]]:peer-disabled:cursor-not-allowed",
+      "space-y-2 outline-none [&_[cmdk-label]]:!relative [&_[cmdk-label]]:!h-fit [&_[cmdk-label]]:!w-fit [&_[cmdk-label]]:text-base [&_[cmdk-label]]:font-medium [&_[cmdk-label]]:leading-none [&_[cmdk-label]]:peer-disabled:cursor-not-allowed",
       className,
     )}
     {...props}
@@ -47,7 +47,7 @@ const CommandInput = React.forwardRef<
     <CommandPrimitive.Input
       ref={ref}
       className={cn(
-        "h-10 w-full rounded-lg px-3 py-2 text-sm outline-none placeholder:text-muted-foreground",
+        "h-10 w-full rounded-lg px-3 py-2 outline-none placeholder:text-muted-foreground",
         className,
       )}
       {...props}
@@ -77,11 +77,7 @@ const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty>
 >((props, ref) => (
-  <CommandPrimitive.Empty
-    ref={ref}
-    className="py-6 text-center text-sm"
-    {...props}
-  />
+  <CommandPrimitive.Empty ref={ref} className="py-6 text-center" {...props} />
 ));
 
 CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
@@ -121,7 +117,7 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled='true']:pointer-events-none data-[disabled='true']:opacity-50",
+      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled='true']:pointer-events-none data-[disabled='true']:opacity-50",
       className,
     )}
     {...props}

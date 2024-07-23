@@ -27,7 +27,7 @@ function Home() {
           Dive Log
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-col gap-3 text-sm">
+      <CardContent className="flex flex-col gap-3">
         <Suspense fallback={<LastObservedSpecieFallback />}>
           <LastObservedSpecie />
         </Suspense>

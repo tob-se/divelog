@@ -9,7 +9,7 @@ function DiveListItem({ dive }: { dive: Dive }) {
     <Link href={`/dives/${id}`}>
       <li
         data-testid="dive-item"
-        className="flex flex-col flex-nowrap gap-1 rounded-sm bg-slate-50 p-2 text-sm outline-none hover:bg-slate-100 hover:text-slate-900"
+        className="flex flex-col flex-nowrap gap-1 rounded-sm bg-slate-50 p-2 outline-none hover:bg-slate-100 hover:text-slate-900"
       >
         <div className="flex justify-between">
           <span data-testid="dive-item-number" className="font-bold">

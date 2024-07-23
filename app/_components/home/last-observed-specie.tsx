@@ -24,7 +24,7 @@ export async function LastObservedSpecie() {
       <div className="relative aspect-[4/3]">
         <div
           data-testid="last-observation"
-          className="absolute z-10 w-full rounded-t-lg bg-black/35 p-1.5 text-sm text-primary-foreground"
+          className="absolute z-10 w-full rounded-t-lg bg-black/35 p-1.5 text-primary-foreground"
         >
           {specie.common_name || specie.name}
         </div>
