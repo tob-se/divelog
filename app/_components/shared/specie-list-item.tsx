@@ -30,9 +30,11 @@ const SpecieListItem = forwardRef<HTMLLIElement, Props>(
         ) : (
           <Fish height={45} width={45} color="dimgray" />
         )}
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-1">
           <span className="leading-none">{specie.common_name}</span>
-          <span className="text-muted-foreground">{specie.name}</span>
+          <span className="leading-none text-muted-foreground">
+            {specie.name}
+          </span>
         </div>
         {children}
       </li>
