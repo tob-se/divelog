@@ -18,6 +18,7 @@ export default function Search({
   const ref = useRef<HTMLInputElement>(null);
 
   // Clear input when query is empty. This happens after an observation is added.
+  // TODO: Change in the future because its a bit hacky
   useEffect(() => {
     if (!query && ref.current?.value) {
       ref.current.value = "";
