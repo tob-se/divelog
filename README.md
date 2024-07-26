@@ -5,10 +5,12 @@
 - [ ] Add Authentication
 - [ ] Better Skeletons
 - [ ] Add Directory Access restrictions
-- [ ] Use pnpm
 - [ ] Fix Layout Shift
 - [ ] Check naming of functions and variables
 - [ ] Implement filtering in logbook
+- [ ] Remove modal dialog
 - [ ] Better Error Handling
-- [ ] Cache npm in Github workflow
 - [ ] squash commits
+
+- [x] Use pnpm
+- [x] Cache npm in Github workflow
