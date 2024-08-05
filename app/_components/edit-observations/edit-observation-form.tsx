@@ -3,7 +3,7 @@ import { Input } from "@/app/_components/ui/input";
 import { Label } from "@/app/_components/ui/label";
 import { Observation } from "@/types/observation";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import SubmitButton from "../ui/submit-button";
+import { Button } from "../ui/button";
 import { useObservationContext } from "./observation-context";
 
 function EditObservationForm({ observation }: { observation: Observation }) {
@@ -45,7 +45,13 @@ function EditObservationForm({ observation }: { observation: Observation }) {
       </div>
       <DialogFooter className="pt-5">
         <DialogClose asChild>
-          <SubmitButton testId="submit-observation-button" />
+          <Button
+            size="sm"
+            type="submit"
+            data-testid="submit-observation-button"
+          >
+            Confirm
+          </Button>
         </DialogClose>
       </DialogFooter>
     </form>
