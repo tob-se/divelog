@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@/app/_components/ui/card";
 import TextTuple from "@/app/_components/ui/text-tuple";
-import { BookOpen, Construction, FishSymbol, Plus } from "lucide-react";
+import { BookOpen, Construction, Fish, FishSymbol, Plus } from "lucide-react";
 import { Suspense } from "react";
 import {
   LastDiveInformation,
@@ -47,8 +47,8 @@ function Home() {
         <NavigationButton href="/dives" name="Logbook">
           <BookOpen />
         </NavigationButton>
-        <NavigationButton name="Life List" href="/">
-          <Construction />
+        <NavigationButton name="Species" href="/species">
+          <Fish />
         </NavigationButton>
         <NavigationButton name="Settings" href="/">
           <Construction />

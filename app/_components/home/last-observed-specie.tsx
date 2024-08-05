@@ -1,8 +1,7 @@
 import GenericTuple from "@/app/_components/ui/generic-tuple";
 import { Skeleton } from "@/app/_components/ui/skeleton";
 import { findLastObservedSpecie } from "@/infrastructure/data-access/find-last-observed-specie";
-import { Fish } from "lucide-react";
-import Image from "next/image";
+import SpecieImage from "../shared/specie-image";
 
 export function LastObservedSpecieFallback() {
   return (
@@ -28,24 +27,7 @@ export async function LastObservedSpecie() {
         >
           {specie.common_name || specie.name}
         </div>
-        {specie.medium_url ? (
-          <Image
-            src={specie.medium_url}
-            fill
-            style={{
-              objectFit: "cover",
-            }}
-            alt="Specie Image"
-            className="rounded-lg"
-          />
-        ) : (
-          <Fish
-            color="dimgray"
-            height={80}
-            width={80}
-            className="m-auto h-full"
-          />
-        )}
+        <SpecieImage imageUrl={specie.medium_url} />
       </div>
     </GenericTuple>
   );

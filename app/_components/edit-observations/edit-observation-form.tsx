@@ -1,4 +1,4 @@
-import { DialogFooter } from "@/app/_components/ui/dialog";
+import { DialogClose, DialogFooter } from "@/app/_components/ui/dialog";
 import { Input } from "@/app/_components/ui/input";
 import { Label } from "@/app/_components/ui/label";
 import { Observation } from "@/types/observation";
@@ -6,13 +6,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import SubmitButton from "../ui/submit-button";
 import { useObservationContext } from "./observation-context";
 
-function EditObservationForm({
-  observation,
-  onSubmit,
-}: {
-  observation: Observation;
-  onSubmit: () => void;
-}) {
+function EditObservationForm({ observation }: { observation: Observation }) {
   const { editObservation } = useObservationContext();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -28,19 +22,19 @@ function EditObservationForm({
       const params = new URLSearchParams(searchParams);
       params.delete("query");
       replace(`${pathname}?${params.toString()}`);
-
-      onSubmit();
     }
   };
 
   return (
-    <form action={action} className="p-3">
-      <div className="flex flex-col gap-2">
-        <Label htmlFor="amount">Amount</Label>
+    <form action={action}>
+      <div className="flex items-center gap-4">
+        <Label htmlFor="amount" className="text-right">
+          Amount
+        </Label>
         <Input
           id="amount"
           name="amount"
-          className="w-24"
+          className="w-full"
           type="number"
           inputMode="numeric"
           min={1}
@@ -50,7 +44,9 @@ function EditObservationForm({
         />
       </div>
       <DialogFooter className="pt-5">
-        <SubmitButton testId="submit-observation-button" />
+        <DialogClose asChild>
+          <SubmitButton testId="submit-observation-button" />
+        </DialogClose>
       </DialogFooter>
     </form>
   );
