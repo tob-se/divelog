@@ -6,14 +6,6 @@ import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export let runtime: string;
-
-if (process.env.VERCEL_ENV) {
-  runtime = "edge";
-} else {
-  runtime = "nodejs";
-}
-
 export const metadata: Metadata = {
   title: "Divelog",
   description: "Highly opinionated diving logbook",
