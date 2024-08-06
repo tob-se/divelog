@@ -6,7 +6,6 @@ import {
   validateDiveForm,
 } from "@/app/_actions/validations/validate-dive-form";
 import { insertDive } from "@/infrastructure/data-access/insert-dive";
-import { randomUUID } from "crypto";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -18,7 +17,7 @@ export async function newDive(
   formData: FormData,
 ) {
   const validatedFields = validateDiveForm(formData, {
-    id: randomUUID(),
+    id: crypto.randomUUID(),
     ...diveData,
   });
 

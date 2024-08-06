@@ -1,19 +1,14 @@
-import { loadEnvConfig } from "@next/env";
 import * as schema from "./schema";
+import { sql } from "@vercel/postgres";
+import { drizzle as drizzleVercel } from "drizzle-orm/vercel-postgres";
 import postgres from "postgres";
-import { drizzle } from "drizzle-orm/postgres-js";
+import { drizzle as drizzlePostgres } from "drizzle-orm/postgres-js";
 
-const projectDir = process.cwd();
-loadEnvConfig(projectDir);
+const createDB = () => {
+  const queryClient = postgres(process.env.POSTGRES_URL!);
+  return drizzlePostgres(queryClient, { schema });
+};
 
-const queryClient = process.env.POSTGRES_URL
-  ? postgres(process.env.POSTGRES_URL)
-  : postgres({
-      host: process.env.POSTGRES_HOST,
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
-      database: process.env.POSTGRES_DATABASE,
-      ssl: false,
-    });
-
-export const db = drizzle(queryClient, { schema });
+export const db = process.env.VERCEL_ENV
+  ? drizzleVercel(sql, { schema })
+  : createDB();
