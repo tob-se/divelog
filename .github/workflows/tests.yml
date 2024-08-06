@@ -7,10 +7,7 @@ on:
     branches: [main, master]
 
 env:
-  POSTGRES_HOST: postgres
-  POSTGRES_DATABASE: postgres
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
+  POSTGRES_URL: "postgresql://postgres:postgres@postgres/postgres"
 
 jobs:
   vitest-job:
