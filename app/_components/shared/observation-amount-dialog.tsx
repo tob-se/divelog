@@ -19,7 +19,7 @@ function ObservationAmountDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-80">
+      <DialogContent className="top-[20%] sm:max-w-80">
         <DialogHeader>
           <DialogTitle>{observation.specie.common_name}</DialogTitle>
           <DialogDescription>How many did you see?</DialogDescription>
