@@ -4,7 +4,7 @@ import { Observation } from "@/types/observation";
 
 function EditObservationButton({ observation }: { observation: Observation }) {
   return (
-    <ObservationAmountDialog observation={observation}>
+    <ObservationAmountDialog specie={observation.specie}>
       <Button
         data-testid="edit-observation-button"
         variant="outline"

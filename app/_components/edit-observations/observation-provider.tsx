@@ -41,14 +41,22 @@ export default function ObservationProvider({
     [observations],
   );
 
+  const findObservation = useCallback(
+    (specieId: number) => {
+      return observations?.find((o) => o.specie.id === specieId);
+    },
+    [observations],
+  );
+
   const value = useMemo(
     () => ({
       observations,
       editObservation,
       deleteObservation,
       setObservations,
+      findObservation,
     }),
-    [observations, editObservation, deleteObservation],
+    [observations, editObservation, deleteObservation, findObservation],
   );
 
   return (

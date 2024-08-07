@@ -5,6 +5,7 @@ type ContextType = {
   observations?: Observation[];
   editObservation: (o: Observation) => void;
   deleteObservation: (specieId: number) => void;
+  findObservation: (specieId: number) => Observation | undefined;
   setObservations: (o: Observation[]) => void;
 };
 

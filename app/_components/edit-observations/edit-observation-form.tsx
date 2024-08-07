@@ -1,27 +1,21 @@
 import { DialogClose, DialogFooter } from "@/app/_components/ui/dialog";
 import { Input } from "@/app/_components/ui/input";
 import { Label } from "@/app/_components/ui/label";
-import { Observation } from "@/types/observation";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Specie } from "@/types/specie";
 import { Button } from "../ui/button";
 import { useObservationContext } from "./observation-context";
 
-function EditObservationForm({ observation }: { observation: Observation }) {
-  const { editObservation } = useObservationContext();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const { replace } = useRouter();
+function EditObservationForm({ specie }: { specie: Specie }) {
+  const { editObservation, findObservation } = useObservationContext();
+
+  const observation = findObservation(specie.id);
 
   const action = (formData: FormData) => {
     const amountText = formData.get("amount")?.toString();
 
     if (amountText) {
       const amount = parseInt(amountText);
-      editObservation({ amount, specie: observation.specie });
-
-      const params = new URLSearchParams(searchParams);
-      params.delete("query");
-      replace(`${pathname}?${params.toString()}`);
+      editObservation({ amount, specie });
     }
   };
 
@@ -38,7 +32,7 @@ function EditObservationForm({ observation }: { observation: Observation }) {
           type="number"
           inputMode="numeric"
           min={1}
-          defaultValue={observation.amount}
+          defaultValue={observation?.amount || 1}
           data-testid="amount-input"
           required
         />

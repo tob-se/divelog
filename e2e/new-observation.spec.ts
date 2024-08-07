@@ -14,11 +14,12 @@ test("new observations", async ({ page }) => {
 
   await page.goto(`/dives/${dive.id}/observations`);
 
-  // add Hammerhead observation
-  await page.getByTestId("search-input").fill("Hammerhead");
+  // add Hammerhead observation via dialog
+  await page.getByTestId("search-input").fill("Scalloped Hammerhead");
   await page.getByTestId("specie-list-item").click();
   await page.getByTestId("amount-input").fill("2");
   await page.getByTestId("submit-observation-button").click();
+  await page.getByTestId("clear-search-button").click();
 
   await expect(page.getByTestId("observation-list-item").first()).toContainText(
     "Hammerhead",
@@ -27,10 +28,10 @@ test("new observations", async ({ page }) => {
     "2",
   );
 
-  // add Pikachu observation
+  // add Pikachu observation via button
   await page.getByTestId("search-input").fill("Pikachu");
-  await page.getByTestId("specie-list-item").click();
-  await page.getByTestId("submit-observation-button").click();
+  await page.getByTestId("add-observation-button").click();
+  await page.getByTestId("clear-search-button").click();
 
   await expect(page.getByTestId("observation-list-item").last()).toContainText(
     "Pikachu",

@@ -8,9 +8,9 @@
 - [ ] Fix Layout Shift
 - [ ] Check naming of functions and variables
 - [ ] Implement filtering in logbook
-- [ ] Remove modal dialog
-- [ ] Better Error Handling
+- [ ] Better Error Handling (e.g. DB queries)
 - [ ] squash commits
 
+- [x] Remove modal dialog
 - [x] Use pnpm
 - [x] Cache npm in Github workflow
