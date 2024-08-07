@@ -13,24 +13,22 @@ function Layout({ params, children }: Props) {
   return (
     <>
       <Header href={"/dives"} name="Dive" />
-      <Card className="flex grow flex-col overflow-hidden">
-        {children}
-        <CardFooter className="flex flex-row items-center justify-between gap-2 border-t bg-muted/50 px-3 py-3">
-          <DeleteDiveForm id={params.id} />
-          <div className="flex gap-2">
-            <Link href={`/dives/${params.id}/edit`}>
-              <Button size="sm" variant="outline" className="h-8">
-                Edit
-              </Button>
-            </Link>
-            <Link href={`/dives/${params.id}/observations`}>
-              <Button size="sm" variant="outline" className="h-8">
-                Edit Observations
-              </Button>
-            </Link>
-          </div>
-        </CardFooter>
-      </Card>
+      <Card className="flex flex-col overflow-hidden">{children}</Card>
+      <CardFooter className="flex-row items-center justify-between gap-2 bg-muted/50 px-3 py-3">
+        <DeleteDiveForm id={params.id} />
+        <div className="flex gap-2">
+          <Link href={`/dives/${params.id}/edit`}>
+            <Button size="sm" variant="outline" className="h-8">
+              Edit
+            </Button>
+          </Link>
+          <Link href={`/dives/${params.id}/observations`}>
+            <Button size="sm" variant="outline" className="h-8">
+              Edit Observations
+            </Button>
+          </Link>
+        </div>
+      </CardFooter>
     </>
   );
 }

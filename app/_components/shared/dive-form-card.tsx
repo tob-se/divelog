@@ -40,68 +40,70 @@ export default function DiveFormCard({
   nextDiveTime,
 }: Props) {
   return (
-    <Card>
-      <CardHeader className="flex-row justify-between space-y-0">
-        <CardTitle data-testid="dive-title">Dive #{diveNumber}</CardTitle>
-        <Switch.Root
-          defaultChecked={dive?.highlight}
-          name="highlight"
-          data-testid="highlight-switch"
-        >
-          <Switch.Thumb asChild>
-            <Star className="data-[state=checked]:fill-yellow-300" />
-          </Switch.Thumb>
-        </Switch.Root>
-      </CardHeader>
-      <CardContent className="space-y-5">
-        <div className="flex flex-row justify-between gap-3">
-          <div className="w-full space-y-2">
-            <Label htmlFor="date">Date</Label>
-            <Input
-              id="date"
-              name="date"
-              type="date"
-              required
-              defaultValue={dive?.date || todayWithoutTimezone()}
-              data-testid="date-input"
-            />
-            <FormErrors errors={formState.errors?.date} />
+    <>
+      <Card>
+        <CardHeader className="flex-row justify-between space-y-0">
+          <CardTitle data-testid="dive-title">Dive #{diveNumber}</CardTitle>
+          <Switch.Root
+            defaultChecked={dive?.highlight}
+            name="highlight"
+            data-testid="highlight-switch"
+          >
+            <Switch.Thumb asChild>
+              <Star className="data-[state=checked]:fill-yellow-300" />
+            </Switch.Thumb>
+          </Switch.Root>
+        </CardHeader>
+        <CardContent className="space-y-5">
+          <div className="flex flex-row justify-between gap-3">
+            <div className="w-full space-y-2">
+              <Label htmlFor="date">Date</Label>
+              <Input
+                id="date"
+                name="date"
+                type="date"
+                required
+                defaultValue={dive?.date || todayWithoutTimezone()}
+                data-testid="date-input"
+              />
+              <FormErrors errors={formState.errors?.date} />
+            </div>
+            <div className="space-y-2">
+              <span className="font-medium leading-none">Time</span>
+              <TimeRadioGroup time={dive?.dive_time || nextDiveTime} />
+              <FormErrors errors={formState.errors?.dive_time} />
+            </div>
           </div>
           <div className="space-y-2">
-            <span className="font-medium leading-none">Time</span>
-            <TimeRadioGroup time={dive?.dive_time || nextDiveTime} />
-            <FormErrors errors={formState.errors?.dive_time} />
+            <PlacesAutocomplete selected={place} setSelected={setPlace} />
+            <FormErrors errors={formState.errors?.place} />
           </div>
-        </div>
-        <div className="space-y-2">
-          <PlacesAutocomplete selected={place} setSelected={setPlace} />
-          <FormErrors errors={formState.errors?.place} />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="dive_site">Dive Site</Label>
-          <Input
-            id="dive_site"
-            name="dive_site"
-            placeholder="Barracuda Point"
-            defaultValue={dive?.dive_site}
-            data-testid="dive-site-input"
-            required
-          />
-          <FormErrors errors={formState.errors?.dive_site} />
-        </div>
-        <div className="space-y-2">
-          <Label htmlFor="comment">Comment</Label>
-          <Textarea
-            name="comment"
-            id="comment"
-            placeholder="Best dive ever"
-            className="min-h-[60px]"
-            defaultValue={dive?.comment}
-            data-testid="comment"
-          />
-          <FormErrors errors={formState.errors?.comment} />
-        </div>
-      </CardContent>
+          <div className="space-y-2">
+            <Label htmlFor="dive_site">Dive Site</Label>
+            <Input
+              id="dive_site"
+              name="dive_site"
+              placeholder="Barracuda Point"
+              defaultValue={dive?.dive_site}
+              data-testid="dive-site-input"
+              required
+            />
+            <FormErrors errors={formState.errors?.dive_site} />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="comment">Comment</Label>
+            <Textarea
+              name="comment"
+              id="comment"
+              placeholder="Best dive ever"
+              className="min-h-20"
+              defaultValue={dive?.comment}
+              data-testid="comment"
+            />
+            <FormErrors errors={formState.errors?.comment} />
+          </div>
+        </CardContent>
+      </Card>
       <CardFooter className="flex justify-between">
         <Link href={dive ? `/dives/${dive.id}` : "/"}>
           <Button size="sm" variant="outline">
@@ -110,6 +112,6 @@ export default function DiveFormCard({
         </Link>
         <SubmitButton />
       </CardFooter>
-    </Card>
+    </>
   );
 }

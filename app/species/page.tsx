@@ -17,8 +17,8 @@ async function Page({
   return (
     <>
       <Header href="/" name="Explore Species" />
-      <Card className="flex grow flex-col overflow-hidden">
-        <CardContent className="flex grow flex-col overflow-hidden">
+      <Card className="flex flex-col overflow-hidden">
+        <CardContent className="flex flex-col overflow-hidden">
           <div className="flex h-full flex-col gap-3">
             <Search query={query} placeholder="Search species" />
             <Suspense key={query} fallback={<ListItemFallback />}>

@@ -33,7 +33,7 @@ export default function CreateDiveForm({
   const nextDiveTime = getNextDiveTime(lastDate, lastDiveTime);
 
   return (
-    <form action={dispatch}>
+    <form action={dispatch} className="flex h-full flex-col">
       <DiveFormCard
         place={place}
         setPlace={setPlace}

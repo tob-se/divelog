@@ -22,7 +22,7 @@ export default function EditDiveForm({ dive }: { dive: Dive }) {
   useMessageToast("Failed to edit dive", state);
 
   return (
-    <form action={dispatch}>
+    <form action={dispatch} className="flex h-full flex-col">
       <DiveFormCard
         place={place}
         dive={dive}

@@ -20,22 +20,24 @@ import NavigationButton from "./_components/home/navigation-button";
 
 function Home() {
   return (
-    <Card className="w-full">
-      <CardHeader>
-        <CardTitle data-testid="title" className="flex flex-row gap-2">
-          <FishSymbol />
-          Dive Log
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-3">
-        <Suspense fallback={<LastObservedSpecieFallback />}>
-          <LastObservedSpecie />
-        </Suspense>
-        <Suspense fallback={<LastDiveInformationFallback />}>
-          <LastDiveInformation />
-        </Suspense>
-        <TextTuple title="Dive Insurance">123123123</TextTuple>
-      </CardContent>
+    <>
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle data-testid="title" className="flex flex-row gap-2">
+            <FishSymbol />
+            Dive Log
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-3">
+          <Suspense fallback={<LastObservedSpecieFallback />}>
+            <LastObservedSpecie />
+          </Suspense>
+          <Suspense fallback={<LastDiveInformationFallback />}>
+            <LastDiveInformation />
+          </Suspense>
+          <TextTuple title="Dive Insurance">123123123</TextTuple>
+        </CardContent>
+      </Card>
       <CardFooter className="justify-between gap-2">
         <NavigationButton
           testId="new-dive-button"
@@ -54,7 +56,7 @@ function Home() {
           <Construction />
         </NavigationButton>
       </CardFooter>
-    </Card>
+    </>
   );
 }
 

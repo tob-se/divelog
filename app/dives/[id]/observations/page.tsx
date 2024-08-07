@@ -21,7 +21,7 @@ export default function Page({
   return (
     <>
       <Header href={`/dives/${params.id}`} name="Observations" />
-      <Card className="flex grow flex-col overflow-hidden">
+      <Card className="flex flex-col overflow-hidden">
         <CardContent className="flex grow flex-col overflow-hidden">
           <div className="flex h-full flex-col gap-3">
             <Search query={query} placeholder="Add new observations" />
@@ -36,10 +36,10 @@ export default function Page({
             )}
           </div>
         </CardContent>
-        <CardFooter>
-          <SubmitObservationForm />
-        </CardFooter>
       </Card>
+      <CardFooter>
+        <SubmitObservationForm />
+      </CardFooter>
     </>
   );
 }
