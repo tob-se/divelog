@@ -9,11 +9,15 @@ import { toObservationDAOs } from "../observation-dao";
 export const saveObservations = async (editObservations: EditObservations) => {
   const { diveId, observations } = editObservations;
 
-  await db.delete(ObservationTable).where(eq(ObservationTable.dive_id, diveId));
+  await db.transaction(async (tx) => {
+    await tx
+      .delete(ObservationTable)
+      .where(eq(ObservationTable.dive_id, diveId));
 
-  if (observations.length > 0) {
-    await db
-      .insert(ObservationTable)
-      .values(toObservationDAOs(editObservations));
-  }
+    if (observations.length > 0) {
+      await tx
+        .insert(ObservationTable)
+        .values(toObservationDAOs(editObservations));
+    }
+  });
 };
