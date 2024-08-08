@@ -18,12 +18,12 @@ function Layout({ params, children }: Props) {
         <DeleteDiveForm id={params.id} />
         <div className="flex gap-2">
           <Link href={`/dives/${params.id}/edit`}>
-            <Button size="sm" variant="outline" className="h-8">
+            <Button size="sm" variant="outline">
               Edit
             </Button>
           </Link>
           <Link href={`/dives/${params.id}/observations`}>
-            <Button size="sm" variant="outline" className="h-8">
+            <Button size="sm" variant="outline">
               Edit Observations
             </Button>
           </Link>

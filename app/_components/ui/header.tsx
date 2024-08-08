@@ -14,12 +14,7 @@ function Header<T extends string>({
     <div className="flex justify-between">
       <div className="flex items-center gap-3">
         <Link href={href}>
-          <Button
-            data-testid="back-button"
-            variant="outline"
-            size="icon"
-            className="h-8 w-8"
-          >
+          <Button data-testid="back-button" variant="outline" size="icon">
             <ChevronLeft className="h-5 w-5" />
             <span className="sr-only">Back</span>
           </Button>
@@ -29,12 +24,7 @@ function Header<T extends string>({
         </h1>
       </div>
       <Link href={"/"}>
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-8 w-8"
-          data-testid="close-button"
-        >
+        <Button variant="outline" size="icon" data-testid="close-button">
           <X className="h-5 w-5" />
           <span className="sr-only">Back</span>
         </Button>

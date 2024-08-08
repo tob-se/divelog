@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ButtonProps, buttonVariants } from "@/app/_components/ui/button";
+import clsx from "clsx";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav
@@ -36,12 +37,14 @@ PaginationItem.displayName = "PaginationItem";
 
 type PaginationLinkProps = {
   isActive?: boolean;
+  disabled?: boolean;
 } & Pick<ButtonProps, "size"> &
   React.ComponentProps<typeof Link>;
 
 const PaginationLink = ({
   className,
   isActive,
+  disabled,
   size = "icon",
   ...props
 }: PaginationLinkProps) => (
@@ -52,8 +55,10 @@ const PaginationLink = ({
         variant: isActive ? "outline" : "ghost",
         size,
       }),
+      clsx(disabled && "pointer-events-none opacity-50"),
       className,
     )}
+    aria-disabled={disabled}
     {...props}
   />
 );
@@ -65,8 +70,8 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    size="default"
-    className={cn("p-3", className)}
+    size="icon"
+    className={cn("p-2", className)}
     {...props}
   >
     <ChevronLeft className="h-4 w-4" />
@@ -80,8 +85,8 @@ const PaginationNext = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to next page"
-    size="default"
-    className={cn("p-3", className)}
+    size="icon"
+    className={cn("p-2", className)}
     {...props}
   >
     <ChevronRight className="h-4 w-4" />

@@ -3,15 +3,14 @@
 import { generatePagination } from "@/lib/utils";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
+  Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-  Pagination,
 } from "../ui/pagination";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function DivePagination({ totalPages }: { totalPages: number }) {
   const pathname = usePathname();
@@ -29,16 +28,12 @@ export default function DivePagination({ totalPages }: { totalPages: number }) {
   return (
     <Pagination>
       <PaginationContent>
-        {currentPage > 1 ? (
-          <PaginationItem>
-            <PaginationPrevious href={createPageURL(currentPage - 1)} />
-          </PaginationItem>
-        ) : (
-          <PaginationItem className="p-3 opacity-50">
-            <ChevronLeft className="h-4 w-4" />
-          </PaginationItem>
-        )}
-
+        <PaginationItem>
+          <PaginationPrevious
+            disabled={currentPage <= 1}
+            href={createPageURL(currentPage - 1)}
+          />
+        </PaginationItem>
         {allPages.map((page, index) => {
           return (
             <PaginationItem key={page + index.toString()}>
@@ -55,16 +50,12 @@ export default function DivePagination({ totalPages }: { totalPages: number }) {
             </PaginationItem>
           );
         })}
-
-        {currentPage < totalPages ? (
-          <PaginationItem>
-            <PaginationNext href={createPageURL(currentPage + 1)} />
-          </PaginationItem>
-        ) : (
-          <PaginationItem className="p-3 opacity-50">
-            <ChevronRight className="h-4 w-4" />
-          </PaginationItem>
-        )}
+        <PaginationItem>
+          <PaginationNext
+            disabled={currentPage >= totalPages}
+            href={createPageURL(currentPage + 1)}
+          />
+        </PaginationItem>
       </PaginationContent>
     </Pagination>
   );

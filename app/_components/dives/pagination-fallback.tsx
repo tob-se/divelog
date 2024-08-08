@@ -5,14 +5,16 @@ import {
   Pagination,
   PaginationContent,
   PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
 } from "../ui/pagination";
 
 function PaginationFallback() {
   return (
     <Pagination>
       <PaginationContent>
-        <PaginationItem className="p-3 opacity-50">
-          <ChevronLeft className="h-4 w-4" />
+        <PaginationItem>
+          <PaginationPrevious disabled href="/" />
         </PaginationItem>
         <div
           className={cn(
@@ -25,8 +27,8 @@ function PaginationFallback() {
         >
           ...
         </div>
-        <PaginationItem className="p-3 opacity-50">
-          <ChevronRight className="h-4 w-4" />
+        <PaginationItem>
+          <PaginationNext disabled href="/" />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
