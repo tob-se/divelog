@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: { id: number } }) {
         </div>
         <CardDescription>{specie.name}</CardDescription>
       </CardHeader>
-      <CardContent className="flex grow flex-col space-y-3 overflow-hidden">
+      <CardContent className="flex flex-col space-y-3 overflow-hidden">
         <div className="relative aspect-[4/3]">
           <SpecieImage imageUrl={specie.medium_url} />
         </div>

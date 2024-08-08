@@ -6,7 +6,7 @@ function Layout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header href="/species" name="Specie" />
-      <Card className="flex grow flex-col overflow-hidden">{children}</Card>
+      <Card className="flex flex-col overflow-hidden">{children}</Card>
     </>
   );
 }

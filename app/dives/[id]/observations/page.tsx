@@ -22,7 +22,7 @@ export default function Page({
     <>
       <Header href={`/dives/${params.id}`} name="Observations" />
       <Card className="flex flex-col overflow-hidden">
-        <CardContent className="flex grow flex-col overflow-hidden">
+        <CardContent className="flex flex-col overflow-hidden">
           <div className="flex h-full flex-col gap-3">
             <Search query={query} placeholder="Add new observations" />
             {query ? (
