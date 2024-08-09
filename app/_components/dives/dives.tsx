@@ -9,7 +9,7 @@ async function Dives({ page, query }: { page: number; query: string }) {
     return <EmptyList message={query ? "no dives found" : "no dives yet"} />;
   }
 
-  return <DiveList dives={dives} key={page} />;
+  return <DiveList dives={dives} />;
 }
 
 export default Dives;

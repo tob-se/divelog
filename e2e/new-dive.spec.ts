@@ -1,7 +1,7 @@
-import { placesMock } from "@/test-utils/places-mock";
+import { formatDate, todayWithoutTimezone } from "@/lib/utils";
+import { mockData } from "@/test-utils/mock-data";
 import test, { expect } from "@playwright/test";
 import { deleteDives } from "../test-utils/data-access/delete-dives";
-import { formatDate, todayWithoutTimezone } from "@/lib/utils";
 
 test.beforeEach(async ({ request }) => {
   await deleteDives();
@@ -13,7 +13,7 @@ const diveSite = "Barracuda Point";
 
 test("create dive with default values", async ({ page }) => {
   await page.route("/api/autocomplete?input=*", async (route) => {
-    await route.fulfill({ json: { data: placesMock } });
+    await route.fulfill({ json: { data: mockData.places } });
   });
 
   await page.goto("/new-dive");

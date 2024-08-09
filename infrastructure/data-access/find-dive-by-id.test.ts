@@ -1,13 +1,11 @@
 import { deleteDives } from "@/test-utils/data-access/delete-dives";
 import { insertDivesDAO } from "@/test-utils/data-access/insert-dives-dao";
-import { randomDive } from "@/test-utils/random-dive";
+import { mockData } from "@/test-utils/mock-data";
 import { randomUUID } from "crypto";
 import { beforeAll, expect, it, test } from "vitest";
 import { findDiveById } from "./find-dive-by-id";
 
-const firstDive = randomDive({ date: "2021-07-22" });
-const secondDive = randomDive({ date: "2022-07-22" });
-const thirdDive = randomDive({ date: "2023-07-22" });
+const { firstDive, secondDive, thirdDive } = mockData.dives;
 
 beforeAll(async () => {
   await deleteDives();

@@ -25,7 +25,8 @@ function AddObservationButton({ specie }: { specie: Specie }) {
     <Button
       data-testid="add-observation-button"
       variant="outline"
-      className="ml-auto h-8 w-8 p-1.5"
+      size="icon"
+      className="ml-auto p-1.5"
       onClick={addObservation}
     >
       {observation?.amount || <Plus />}

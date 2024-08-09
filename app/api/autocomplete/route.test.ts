@@ -1,9 +1,9 @@
-import { placesMock } from "@/test-utils/places-mock";
 import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
 import { NextRequest } from "next/server";
 import { afterAll, afterEach, beforeAll, expect, it, vi } from "vitest";
 import { GET } from "./route";
+import { mockData } from "@/test-utils/mock-data";
 
 const server = setupServer();
 
@@ -22,7 +22,7 @@ it("returns suggestions", async () => {
 
   server.use(
     http.post("https://places.googleapis.com/v1/places:autocomplete", () => {
-      return HttpResponse.json({ suggestions: placesMock });
+      return HttpResponse.json({ suggestions: mockData.places });
     }),
   );
 
@@ -35,13 +35,13 @@ it("returns suggestions", async () => {
   expect(response.ok).toBeTruthy();
 
   const json = await response.json();
-  expect(json.data).toEqual(placesMock);
+  expect(json.data).toEqual(mockData.places);
 });
 
 it("returns error when api key is missing", async () => {
   server.use(
     http.post("https://places.googleapis.com/v1/places:autocomplete", () => {
-      return HttpResponse.json({ suggestions: placesMock });
+      return HttpResponse.json({ suggestions: mockData.places });
     }),
   );
 

@@ -1,10 +1,10 @@
+import { formatDate } from "@/lib/utils";
+import { insertDiveDAO } from "@/test-utils/data-access/insert-dive-dao";
+import { mockData } from "@/test-utils/mock-data";
+import { randomDive } from "@/test-utils/random-dive";
 import { faker } from "@faker-js/faker";
 import test, { expect } from "@playwright/test";
 import { deleteDives } from "../test-utils/data-access/delete-dives";
-import { randomDive } from "@/test-utils/random-dive";
-import { insertDiveDAO } from "@/test-utils/data-access/insert-dive-dao";
-import { formatDate } from "@/lib/utils";
-import { placesMock } from "@/test-utils/places-mock";
 
 const dive = randomDive({ highlight: false });
 
@@ -21,7 +21,7 @@ const date = "2000-01-01";
 
 test("edit dive", async ({ page }) => {
   await page.route("/api/autocomplete?input=*", async (route) => {
-    await route.fulfill({ json: { data: placesMock } });
+    await route.fulfill({ json: { data: mockData.places } });
   });
 
   await page.goto(`/dives/${dive.id}/edit`);

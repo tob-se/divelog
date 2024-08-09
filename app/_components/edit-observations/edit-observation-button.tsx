@@ -8,7 +8,8 @@ function EditObservationButton({ observation }: { observation: Observation }) {
       <Button
         data-testid="edit-observation-button"
         variant="outline"
-        className="h-8 w-8 p-1.5"
+        size="icon"
+        className="p-1.5"
       >
         {observation.amount}
       </Button>
